@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InvestigateNet</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id ="user_nav" align = "right">
+<h4>
+<% if current_user %>
+  Logged in as <%= current_user.email %> ||
+  <%= link_to "Log out", log_out_path %> ||
+  <%= link_to "Account Info", root_url + "researchers/edit"  %> ||
+  <%= link_to "Questions", root_url + "researchers/questions"  %>
+  <% if (current_admin.Is_Admin || current_admin.superuser) %>
+    || <%= link_to "Admin", root_url + "admin/researchers"  %>
+  <% end %>
+<% else %>
+  <%= link_to "Sign up", sign_up_path %> ||
+  <%= link_to "Log in", log_in_path %>
+<% end %>
+  </h4>
+</div>
+
+<%= yield  %>
+
+</body>
+</html>

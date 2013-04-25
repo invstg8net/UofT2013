@@ -1,0 +1,7 @@
+class RemoveMobileNumberFromResearcher < ActiveRecord::Migration
+  def change
+    drop_table :bubbles
+    remove_column :researchers, :mobile_number, :string
+  end
+
+end

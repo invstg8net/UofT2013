@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Invstg8.net account</h1>
+</br>
+<%= link_to "Edit Info", edit_researcher_path(@researcher) %>
+</br>
+
+<div class="container">
+  <table class="table">
+    <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Expertise</th>
+    </thead>
+   
+      <tr class="researcher">
+        <td><%= @researcher.name %></td>
+        <td><%= @researcher.email %></td>
+        <td><%= @researcher.phone_number %></td>
+         <td><%= @researcher.expertise %></td>
+      </tr>
+    
+  </table>
+  <div>
+  </div><!--container-->
+</div>
+
+
+
+<%= link_to 'Back', "questions" %>

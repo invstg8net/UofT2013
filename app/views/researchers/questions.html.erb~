@@ -1,0 +1,75 @@
+<html>
+<body link="#00FF00" vlink="#00FF00" alink="#00FF00"> 
+<h1>Questions</h1>
+<%= flash_message %>
+</br>
+<%= link_to "Create New Question", new_question_path %>
+<h3 align= "center">My Questions</h3>
+<div class="container">
+  <table class="table">
+    <thead>
+    <th>Question</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Date</th>
+    <th>Needed By</th>
+    <th>Answers</th>
+    <!--<th>Successful Answers</th>
+    <th>Unsuccessful Replies</th> -->
+    <th></th>
+    <th></th>
+    </thead>
+    <% @questions.each do |q| %>
+      <tr class="question">
+        <td><%= q.body %></td>
+        <td><%= q.email %></td>
+        <td><%= q.phone_number %></td>
+        <td><%= q.created_at.strftime('%c') %></td>
+        <td><%= q.needed_by.strftime('%c') %></td>
+        <td><%= q.answers.where(:answered => true).where('body IS NOT NULL').count %></td>
+        <!--<td><%= q.answers.count %></td>
+        -->
+        <td><%= q.answers.where(:answered => true).where('body IS NULL').count %></td> -->
+        <td><%= link_to 'View Answers', question_path(q.id) %> </td>
+       
+      </tr>
+    <% end %>
+  </table>
+  <div>
+  </div><!--container-->
+</div>
+
+<h3 align= "center">Questions Sent to me</h3>
+<div class="container">
+  <table class="table">
+    <thead>
+    <th>Question</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Date</th>
+    <th>Needed By</th>
+    <th>Answers</th>
+    <!--<th>Successful Answers</th>
+    <th>Unsuccessful Replies</th> -->
+    <th></th>
+    <th></th>
+    </thead>
+    <% @aquestions.each do |p| %>
+      <tr class="question">
+        <td><%= p.body %></td>
+        <td><%= p.email %></td>
+        <td><%= p.phone_number %></td>
+        <td><%= p.created_at.strftime('%c') %></td>
+        <td><%= p.needed_by.strftime('%c') %></td>
+        <td><%= p.answers.where(:answered => true).where('body IS NOT NULL').count %></td>
+        <!--<td><%= p.answers.count %></td>
+        
+        <td><%= p.answers.where(:answered => true).where('body IS NULL').count %></td> -->
+        <td><%= link_to 'View Answers', question_path(p.id) %> </td>
+        <td><%= link_to 'Answer Question', edit_answer_path(Answer.find(:all, :conditions => ["researcher_id = ? and question_id = ?", current_user.id, p.id]).first.id) %> </td>
+      </tr>
+    <% end %>
+  </table>
+  <div>
+  </div><!--container-->
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="sixteen columns">
+    <h1>Investig8.net Answer</h1>
+    <%= form_for @answer do |a| %>
+
+      <section>
+        <div>
+          <label>Answer<span class="import-stuff">*</span></label>
+           <%= a.hidden_field :question_id, q.id %>
+           <%= a.hidden_field :researcher_id, current_user.id %>
+          <%= a.text_area :body %>
+        </div>
+      </section><!-- -->
+      <hr class=""/>
+      <%= a.submit %>
+
+    </div>
+
+
+  </div><!-- container -->>

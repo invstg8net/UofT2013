@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <h3>Question: <%= @question.body %> </h3>
+  <% b =false %>
+  <% @question.answers.each do |a| %>
+    <% if a.body 
+       b = true%>
+    <% end %>
+  <% end%>
+  <% if b %>
+    
+    <table class="table">
+      <thead>
+      <th>State</th>
+      <th>Answer</th>
+      <th>Request Date</th>
+      <th>Researcher Name</th>
+      <th>Researcher Email</th>
+      <th>Researcher Phone Number</th>
+      </thead>
+     <% @question.answers.each do |a| %>
+       <% if a.body %>
+      <tr class="answer">
+        <td><%= a.answered ? (a.body.nil? ? 'Unsucessful' : 'Sent') : 'Waiting'  %></td>
+        <td><%= a.body %></td>
+        <td><%= a.created_at.strftime('%c') %></td>
+        <td><%= a.researcher.try(:name) %></td>
+        <td><%= a.researcher.try(:email) %></td>
+        <td><%= a.researcher.try(:phone_number) %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  <% else %>
+    </br>
+    <h4>We're sorry, but this question wasn't replied yet! </h4>
+      
+  <% end %>
+  </table>
+
+
+
+<%= link_to 'Back', root_url + "researchers/questions" %>

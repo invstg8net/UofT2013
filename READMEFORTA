@@ -1,0 +1,8 @@
+Twilio.rb:
+Twilio is initialized to my Twilio account. It will pull information from my Twilio account. 
+The method send will send a text message to my phone from the Twilio number.
+The method receive will pull out all the text messages that the Twilio number received.
+All the get methods pulls information about a smsMessage that the Twilio number received. See the two pictures(pullingInfoFromSMS.png and receiveTwilioSMS.png). Each sms message has an id and we use that id to pull specific information about that text.
+
+Testing:
+The two pictures show that it is pulling the information correctly from the Twilio account. pullingInfoFromSMS.png shows that it pulled and parsed the body of the sms. receiveTwilioSMS.png shows that it is receiving and sending sms to my phone.

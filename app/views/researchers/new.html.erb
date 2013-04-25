@@ -1,0 +1,39 @@
+<h1>Sign Up</h1>
+<%= flash_message %>
+
+<%= form_for @researcher do |f| %>
+  <% if @researcher.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @researcher.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+<p>
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </p>
+  <p>
+    <tr>
+      <%= f.label :expertise %><br />
+      <td><%= collection_select :expertise, :topic, Expert.all, :topic, :topic %></td>
+      </tr>
+  </p>
+  <%= f.submit %>
+<% end %>
+</body>

@@ -1,0 +1,5 @@
+<%= flash_message %>
+
+THANK YOU - Your question has entered the netherverse. Answers should be coming soon
+</br>
+<%= link_to "Continue", log_in_path %>

@@ -1,0 +1,3 @@
+THANK YOU - Your answer will be treasured like diamond that it is
+</br>
+<%= link_to "Continue", log_in_path %>

@@ -1,0 +1,31 @@
+<header>
+  <h1></h1>
+</header>
+<div class="container">
+  <table class="table">
+    <thead>
+    <th>ID</th>
+    <th>Topic</th>
+    <th>Number of Researchers</th>
+    <th>Active</th>
+    <th></th>
+    </thead>
+    <!-- Username Point -->
+    <% @experts.each do |r| %>
+      <tr class="test">
+        <td><%= r.id %></td>
+        <td><%= r.topic %></td>
+        <td><%= r.researcher_count %></td>
+        <td>
+          <% if r.active? %>
+            <%= link_to 'Deactivate', [:deactivate, :admin, r] %>
+          <% else %>
+            <%= link_to 'Activate', [:activate, :admin, r] %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
+</div><!--container-->
+
