@@ -1,0 +1,70 @@
+Requirements
+
+Rails 3.2.12
+
+Ruby 1.9.3
+
+Bundler 1.3.2
+
+Installation Instructions
+
+    install ruby (it’s usually already intalled on linux systems) - sudo apt-get install ruby
+
+    install Rails 3.2.12 - sudo apt-get install rails
+
+    go to the folder where you extracted the project downloaded from Github - cd ~/invstg8net
+
+    install Bundler - bundle install
+
+    change the superuser’s password (instructions below)
+
+    create your database - rake db:migrate and then rake db:seed
+
+    run Rails - rails s
+
+    open an internet browser and go to URL: 0.0.0.0
+
+
+During Rails and Bundler installation, it might be required installing other packages like postgreSQL. Just install the required packages using the apt-get install command (ex: sudo apt-get install postgresql)
+
+Texting
+
+Current Twilio Account:
+
+username: thomasleong3@gmail.com
+
+password: oswegatchie
+
+To sign in:
+go to: https://www.twilio.com/login
+
+To register a phone number so that you can make a request via texting:
+
+modify twilio.rb
+look for add_account(“XXX-XXX-XXXX”) and change it to your number.
+
+To make a request via texting:
+1. Make sure the server is running
+2. Send “request$” to 289 802 9128
+3. Follow the instructions received
+
+4. Order of instructions: Topic, email, time, and question of request.
+
+5. When responding to the time, it must be in the form of $time 1, or $time 2, etc
+6. Request is sent when you received the Thank you text.
+
+
+
+Super user
+
+The superuser account is created after the database creation, when the command rake db:seed is executed. The first username and password of the superuser account are set in the file seeds.rb (main/db/seeds.rb). To change it, before running the seed command, just go to this file and type the new values to each field.
+
+After the seed command being executed, login and password can’t be changed using the steps above. To change the password, log in the system with the login and password created when seeding (the ones inside seeds.rb), go to account page and click the link to edit info. In the edit page, it’s possible to change the password.
+
+Other information
+
+Packages Used:
+
+- Twilio for texting
+- POP3 for email
+- Watir for automated testing
