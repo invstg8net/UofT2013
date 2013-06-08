@@ -1,6 +1,6 @@
 #Getting Started#
 ## Aim ##
-  Give future and potential invstg8net rhokers a short summery and trial and 
+  Give future and potential invstg8.net coders / rhokers a short summary and trial and 
   error approach to get them going quickly.
   
 ## Audience ##
