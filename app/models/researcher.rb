@@ -1,7 +1,8 @@
+# -*- coding: undecided -*-
 class Researcher < ActiveRecord::Base
   has_many :answers
 
-  attr_accessible :email, :password, :password_confirmation, :activated, :name, :phone_number, :mobile_number, :Is_Admin
+  attr_accessible :email, :password, :password_confirmation, :activated, :name, :phone_number, :mobile_number, :Is_Admin, :Max_Questions
   
   attr_accessor :password
   before_save :encrypt_password
@@ -19,6 +20,14 @@ class Researcher < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  def GetMaxQuestions
+    return self.Max_Questions
+  end
+
+  def SetMaxQuestion£¨max)
+    self.Max_Questions = max
   end
   
   def encrypt_password
