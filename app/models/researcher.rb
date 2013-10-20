@@ -1,4 +1,4 @@
-# -*- coding: undecided -*-
+# -*- coding: utf-8 -*-
 class Researcher < ActiveRecord::Base
   has_many :answers
 
@@ -26,7 +26,7 @@ class Researcher < ActiveRecord::Base
     return self.Max_Questions
   end
 
-  def SetMaxQuestion£¨max)
+  def SetMaxQuestion(max)
     self.Max_Questions = max
   end
   
