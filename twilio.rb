@@ -13,6 +13,7 @@ class Twilio3
   # 4's state = region
   # 5's state = question
   # 6's state = tags, send thank you
+  # 7's state = number of text capacity
   $account_info = [];
   $updates = [];
   $last_message = "";
@@ -29,8 +30,8 @@ class Twilio3
 
   # Add a phone number to the list of phone numbers that we should monitor.
   def add_account(phoneNumber)
-    # format of $account_info = [phoneNumber, state number, topic, email, time answer, question]
-    $account_info.insert(0, [phoneNumber, 0, "", "", "", ""]);
+    # format of $account_info = [phoneNumber, state number, topic, email, time answer, question, text cap]
+    $account_info.insert(0, [phoneNumber, 0, "", "", "", "", ""]);
   end
 
   # take out any special characters like ; or '
@@ -45,12 +46,34 @@ class Twilio3
 		return @client.account.sms.messages.get("SM4c43cb130f7171b4e264b44eac950ca4");
 	end
 
+
+
+
+
   # send an sms message with the body sendMessage, to the phone number sendTo
+  # checks the length of the message to be sent, if length exceeds the user requested
+  # length, send 
 	def send(sendMessage, sendTo)
+    
+    message_length = sendMessage.length()
+
+    #Each text has 145 characters
+    number_texts = message_length/145
+
+    #Message to be sent
+    sent_message = nil
+
+    #Checks the text capacity of the account
+    if number_texts > account[7]
+      sent_message = "The number of texts that this message will send exceeds the number of your accounts capacity"
+    else
+      sent_message = sendMessage
+
+
 	@client.account.sms.messages.create(
 	  :from => '2898029128',
 	  :to => sendTo,
-	  :body => sendMessage
+	  :body => sent_message
 	)
 	end
 
