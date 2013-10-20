@@ -71148,3 +71148,167 @@ ActionController::RoutingError (uninitialized constant Http):
 
 
   Rendered /var/lib/gems/1.9.1/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to Expert (1)
+Migrating to CreateQuestionsTable (20120602175842)
+Migrating to CreateAnswersTable (20120602181046)
+Migrating to CreateResearcherTable (20120602183136)
+Migrating to AddFieldsToResearchers (20120602192213)
+Migrating to AddActivatedFieldToUser (20120602193218)
+Migrating to AddExpertiseAndPrefContactToResearchers (20130313040602)
+Migrating to RemoveMobileNumberFromResearcher (20130401062218)
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("answers")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("experts")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("questions")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("researchers")[0m
+
+
+Started GET "/posts" for 127.0.0.1 at 2013-10-20 16:25:06 -0400
+
+ActionController::RoutingError (No route matches [GET] "/posts"):
+  actionpack (3.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.2) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.2) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.2) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.2) lib/action_dispatch/middleware/static.rb:61:in `call'
+  railties (3.2.2) lib/rails/engine.rb:479:in `call'
+  railties (3.2.2) lib/rails/application.rb:220:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.2) lib/rails/rack/log_tailer.rb:14:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-20 16:25:15 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"âœ“", "authenticity_token"=>"1M+xCbQ/JfpeRWyI9Dc829rjaPzw2h2LZke0UMfe8Q4=", "email"=>"lol", "password"=>"[FILTERED]", "commit"=>"Log in"}
+Completed 500 Internal Server Error in 2ms
+
+ArgumentError (unknown encoding name: undecided):
+  app/models/researcher.rb:1
+  app/controllers/sessions_controller.rb:12:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.5ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-20 16:31:02 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"âœ“", "authenticity_token"=>"1M+xCbQ/JfpeRWyI9Dc829rjaPzw2h2LZke0UMfe8Q4=", "email"=>"sdfds", "password"=>"[FILTERED]", "commit"=>"Log in"}
+Completed 500 Internal Server Error in 1ms
+
+SyntaxError (/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:28: invalid multibyte char (UTF-8)
+/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:28: syntax error, unexpected end-of-input
+  def SetMaxQuestion£¨max)
+                     ^):
+  app/controllers/sessions_controller.rb:12:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.2ms)
+
+
+Started GET "/researchers/new" for 127.0.0.1 at 2013-10-20 16:31:15 -0400
+
+SyntaxError (/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:28: invalid multibyte char (UTF-8)
+/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:28: syntax error, unexpected end-of-input
+  def SetMaxQuestion£¨max)
+                     ^):
+  app/controllers/researchers_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-20 16:32:42 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"âœ“", "authenticity_token"=>"1M+xCbQ/JfpeRWyI9Dc829rjaPzw2h2LZke0UMfe8Q4=", "email"=>"dsf", "password"=>"[FILTERED]", "commit"=>"Log in"}
+Completed 500 Internal Server Error in 2ms
+
+ArgumentError (unknown encoding name: undecided):
+  app/models/researcher.rb:1
+  app/controllers/sessions_controller.rb:12:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.5ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.3ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-20 16:49:11 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"âœ“", "authenticity_token"=>"1M+xCbQ/JfpeRWyI9Dc829rjaPzw2h2LZke0UMfe8Q4=", "email"=>"sdfds", "password"=>"[FILTERED]", "commit"=>"Log in"}
+Completed 500 Internal Server Error in 1ms
+
+SyntaxError (/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:29: invalid multibyte char (UTF-8)
+/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:29: syntax error, unexpected end-of-input
+  def SetMaxQuestion£¨max)
+                     ^):
+  app/controllers/sessions_controller.rb:12:in `create'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.3ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.5ms)
+
+
+Started GET "/researchers/new" for 127.0.0.1 at 2013-10-20 16:49:21 -0400
+
+SyntaxError (/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:29: invalid multibyte char (UTF-8)
+/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:29: syntax error, unexpected end-of-input
+  def SetMaxQuestion£¨max)
+                     ^):
+  app/controllers/researchers_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.6ms)
+
+
+Started GET "/researchers/new" for 127.0.0.1 at 2013-10-20 16:53:03 -0400
+
+SyntaxError (/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:29: invalid multibyte char (UTF-8)
+/home/matt/Desktop/great-slaves-invstg8.net/app/models/researcher.rb:29: syntax error, unexpected end-of-input
+  def SetMaxQuestion£¨max)
+                     ^):
+  app/controllers/researchers_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /usr/local/lib/ruby/gems/2.0.0/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.1ms)
+
+
+Started GET "/researchers/new" for 127.0.0.1 at 2013-10-20 16:54:36 -0400
+Processing by ResearchersController#new as HTML
+  [1m[36mExpert Load (0.1ms)[0m  [1mSELECT "experts".* FROM "experts" [0m
+  Rendered researchers/new.html.erb within layouts/application (42.3ms)
+Compiled application.css  (0ms)  (pid 16940)
+Compiled application.js  (0ms)  (pid 16940)
+Completed 200 OK in 83ms (Views: 61.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-20 16:54:41 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"âœ“", "authenticity_token"=>"1M+xCbQ/JfpeRWyI9Dc829rjaPzw2h2LZke0UMfe8Q4=", "email"=>"sdfds", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[35mResearcher Load (0.2ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."email" = 'sdfds' LIMIT 1
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 40ms (Views: 3.9ms | ActiveRecord: 0.2ms)
