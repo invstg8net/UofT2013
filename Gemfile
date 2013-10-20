@@ -1,4 +1,4 @@
-#source 'https://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
@@ -42,6 +42,8 @@ gem "twitter-bootstrap-rails"
 gem "twilio-ruby"
 gem  'aws-ses'
 
+# Added to get javascript runtime
+gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
