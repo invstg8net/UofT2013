@@ -2,7 +2,7 @@
 class Researcher < ActiveRecord::Base
   has_many :answers
 
-  attr_accessible :email, :password, :password_confirmation, :activated, :name, :phone_number, :mobile_number, :Is_Admin, :Max_Questions
+  attr_accessible :email, :password, :password_confirmation, :activated, :name, :phone_number, :mobile_number, :Is_Admin, :Max_Questions, :User_rating
   
   attr_accessor :password
   before_save :encrypt_password
@@ -11,6 +11,7 @@ class Researcher < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_presence_of :phone_number
+  validates_presence_of :User_rating
   validates_uniqueness_of :email
   
   def self.authenticate(email, password)
@@ -28,6 +29,14 @@ class Researcher < ActiveRecord::Base
 
   def SetMaxQuestion(max)
     self.Max_Questions = max
+  end
+  
+  def Get_User_rating
+    return self.User_rating
+  end
+  
+  def Set_User_rating(rating)
+    self.User_rating = rating
   end
   
   def encrypt_password
