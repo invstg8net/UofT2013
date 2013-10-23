@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 class Researcher < ActiveRecord::Base
   has_many :answers
+  has_many :questions
 
-  attr_accessible :email, :password, :password_confirmation, :activated, :name, :phone_number, :mobile_number, :Is_Admin, :Max_Questions, :User_rating
+  attr_accessible :id, :email, :password, :password_confirmation, :activated, :name, :phone_number, :status, :max_questions, :rating, :privacy
   
   attr_accessor :password
   before_save :encrypt_password
@@ -12,7 +13,9 @@ class Researcher < ActiveRecord::Base
   validates_presence_of :email
   validates_presence_of :phone_number
   validates_presence_of :User_rating
+  validates_presence_of :id
   validates_uniqueness_of :email
+  validates_uniqueness_of :id
   
   def self.authenticate(email, password)
     user = find_by_email(email)
@@ -24,19 +27,19 @@ class Researcher < ActiveRecord::Base
   end
 
   def GetMaxQuestions
-    return self.Max_Questions
+    return self.max_questions
   end
 
   def SetMaxQuestion(max)
-    self.Max_Questions = max
+    self.max_questions = max
   end
   
-  def Get_User_rating
-    return self.User_rating
+  def GetRating
+    return self.rating
   end
   
-  def Set_User_rating(rating)
-    self.User_rating = rating
+  def SetRating(rating)
+    self.rating = rating
   end
   
   def encrypt_password

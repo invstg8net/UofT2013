@@ -1,5 +1,8 @@
 class Question < ActiveRecord::Base
-  has_many :answers
+  has_many :answers #make singular?
+  has_many :appended_details  #ignore for now
+
+  belongs_to :asker
 
   #attr_accessible :  :email,:topic, :phone_number, :body, :created_at, :updated_at, :escalated, :needed_by 
   def escalate_to_admin
@@ -9,7 +12,7 @@ class Question < ActiveRecord::Base
   end
 
   def send_to_researcher(researcher)
-    a = Answer.new :researcher => researcher, :question => self
+    a = Answer.new :answerer => researcher, :question => self
     InvestigateMailer.question_email(a).deliver if a.save
   end
 

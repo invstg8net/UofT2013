@@ -2,7 +2,9 @@ class Answer < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   belongs_to :question
-  belongs_to :researcher
+  belongs_to :answerer
+
+  attr_accessible :rating
 
   def send_to_journalist
     if self.question.email.blank?
