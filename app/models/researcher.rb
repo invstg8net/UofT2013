@@ -15,7 +15,6 @@ class Researcher < ActiveRecord::Base
   validates_presence_of :User_rating
   validates_presence_of :id
   validates_uniqueness_of :email
-  validates_uniqueness_of :id
   
   def self.authenticate(email, password)
     user = find_by_email(email)
