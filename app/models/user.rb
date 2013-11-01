@@ -1,3 +1,6 @@
+# Made a generic class called User which other models will inherit from (e.g. Admin / Researcher)
+# Authentication methods and password encryption is done in this class
+
 class User < ActiveRecord::Base 
   self.abstract_class = true
   attr_accessible :email, :password, :password_confirmation
