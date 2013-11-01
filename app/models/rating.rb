@@ -14,10 +14,4 @@ class Rating < ActiveRecord::Base
         self.rating = Rating
     end
     
-    def HideRating()
-	self.hidden = true
-    end
-    def ShowRating()
-	self.hidden = false
-    end    
 end
