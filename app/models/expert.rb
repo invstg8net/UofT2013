@@ -24,12 +24,5 @@ def SetExpertise(topic)
     end
 end
 
-def HideExpertise()
-    self.hidden = true;
-end
-def ShowExpertise()
-    self.hidden = false;
-end
-
 end
 
