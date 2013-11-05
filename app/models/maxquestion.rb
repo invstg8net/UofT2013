@@ -7,6 +7,7 @@ class QuestionCap < Field
     end
       
     def SetQuestionCap(threshold)
-        self.QuestionCap = threshold
+        self.max_question = threshold
     end
+
 end

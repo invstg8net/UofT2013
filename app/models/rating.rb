@@ -13,5 +13,5 @@ class Rating < ActiveRecord::Base
     def SetRating(rating)
         self.rating = Rating
     end
-    
+  
 end
