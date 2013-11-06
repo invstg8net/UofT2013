@@ -108,4 +108,12 @@ class Test_Suite < Test::Unit::TestCase
 		@textlengthcap.SetTextLengthCap(145)
 		assert_equal @textlengthcap.GetTextLengthCap, 145
 	end
+#18
+	#Creates an anonymous name for the user if he wants to hide his identity
+	def test_HideName
+		@name.SetName("Dave")
+		assert_equal @name.GetName, "Dave"
+		@name.Hide
+		assert_equal @name.GetName, "John Doe"
+	end
 end
