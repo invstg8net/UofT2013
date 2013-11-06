@@ -1,6 +1,5 @@
-class Rating < ActiveRecord::Base
-    attr_accessible :rating
-    attr_accessor :hidden
+class Rating < Field
+    attr_accessor :rating
     # Fetch the rating of the researcher if made visible 
     def GetRating()
 	if (self.hidden == true)    	
@@ -11,7 +10,7 @@ class Rating < ActiveRecord::Base
     end
     # This will be used by an algorithm to constantly change the rating of a researcher
     def SetRating(rating)
-        self.rating = Rating
+        self.rating = rating
     end
   
 end

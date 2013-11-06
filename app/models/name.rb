@@ -1,6 +1,8 @@
+require './field'
+
 class Name < Field
-    set_table_name "name"
-    attr_accessible :name
+
+    attr_accessor :name
 
     def GetName()
 	if (self.hidden == true)    	

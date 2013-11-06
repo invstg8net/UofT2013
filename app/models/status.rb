@@ -1,17 +1,19 @@
 class Status < Field
-    set_table_name "account status"
-    attr_accessible :acct_status
+    attr_accessor :acct_status
 
     def GetStatus()
+	if (self.acct_status == nil)
+		return nil
+	end
 	if (self.acct_status < 0)
 	    return "Permanently Banned"
-	elsif (self.acct_status = 0)
-	    return "Good Standing"
-	else
+	elsif (self.acct_status > 0)
 	    return self.acct_status
-    end
-      
+	else
+	    return "Good Standing"
+       end
+    end   
     def SetStatus(days)
-        self.acct_status = daysS
+        self.acct_status = days
     end
 end

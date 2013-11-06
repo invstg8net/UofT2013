@@ -1,6 +1,6 @@
 class TimeSlot < Field
 
-    attr_accessible :start_time, :end_time
+    attr_accessor :start_time, :end_time
    
     #This method returns a boolean true or false, if the time
     #time provided is in the time slot provided by the user
@@ -17,7 +17,6 @@ class TimeSlot < Field
     #on account creation
  
     def getTimeSlot()
-	return ("Able to send in between ? and ?", self.start_time, self.end_time)
     end
 
     #This method will be used to set/update the users available start time and end time

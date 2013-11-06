@@ -1,4 +1,4 @@
-class Field < ActiveRecord::Base
+class Field #< ActiveRecord::Base
 
     attr_accessor :hidden
     

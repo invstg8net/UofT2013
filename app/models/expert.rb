@@ -1,17 +1,22 @@
-class Expert < ActiveRecord::Base
-
-belongs_to :user
-attr_accessible :active, :topic, :researcher_count
+class Expert < Field
+ 
+#belongs_to :user
+attr_accessor :active, :topic, :researcher_count
 
 def GetExpertise()
-	return self.topic
+	if (self.hidden == true)    	
+		return nil
+	else	
+		return self.topic
+	end
 end
 
 def SetExpertise(topic)
-    if (['News, Sciences, Politics, Weather'].include? topic)
+    #Checks if the topic provided is a valid field of research
+    if (['News', 'Sciences', 'Politics', 'Weather', 'Mining', 'Astronomy'].include? topic)
 	self.topic = topic
     else
-        puts "Field can only be News, Sciences, Politics, or Weather"
+        puts " Field can only be News, Sciences, Politics, Weather, Mining, or Astronomy"
     end
 end
 end

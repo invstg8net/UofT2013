@@ -1,6 +1,6 @@
 class Phone < Field
-    set_table_name "phone"
-    attr_accessible :phone
+
+    attr_accessor :phone
 
     def GetPhone()
 	if (self.hidden == true)    	
@@ -10,7 +10,7 @@ class Phone < Field
 	end
     end
     
-    def SetPhone(Phone)
+    def SetPhone(phone)
         self.phone = phone
     end
 end
