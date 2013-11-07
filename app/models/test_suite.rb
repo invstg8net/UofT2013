@@ -10,6 +10,7 @@ require './time'
 require './phone'
 require './rating'
 require './expert'
+require './question'
 
 class Test_Suite < Test::Unit::TestCase
 
@@ -21,7 +22,8 @@ class Test_Suite < Test::Unit::TestCase
 		@status = Status.new
 		@maxquestion = QuestionCap.new
 		@textlengthcap = TextLengthCap.new
-	       #@researcher = Researcher.new
+	       	@question = Question.new
+		#@researcher = Researcher.new
 	end
 
 	def teardown
@@ -116,4 +118,36 @@ class Test_Suite < Test::Unit::TestCase
 		@name.Hide
 		assert_equal @name.GetName, "John Doe"
 	end
+#19
+	def test_Hide_Show_Name
+		@name.SetName("Dave");
+		assert_equal @name.GetName, "Dave"
+		@name.Hide
+	        assert_equal @name.GetName, "John Doe"
+		@name.Show
+		assert_equal @name.GetName, "Dave"
+	end
+#20
+	def test_HideExpertise
+		@expert.SetExpertise("Astronomy")
+		assert_equal @expert.GetExpertise, "Astronomy"
+		@expert.Hide
+		assert_equal @expert.GetExpertise, nil
+	end
+#21
+	def test_Hide_Show_Expertise
+		@expert.SetExpertise("Politics")
+		assert_equal @expert.GetExpertise, "Politics"
+		@expert.Hide
+		assert_equal @expert.GetExpertise, nil
+		@expert.Show
+		assert_equal @expert.GetExpertise, "Politics"
+	end
+#24
+	def test_Appending_Info_To_Question
+		@question.SetQuestion("This is the Body")
+		assert_equal @question.GetQuestion, ["This is the Body",nil]
+		@question.Add_Info("and this is the Additional Info")
+		assert_equal @question.GetQuestion, ["This is the Body","and this is the Additional Info"]
+	end 	
 end

@@ -1,10 +1,13 @@
-class Question < ActiveRecord::Base
-  has_many :answers #make singular?
-  has_many :appended_details  #ignore for now
+class Question #< ActiveRecord::Base
+  #has_many :answers #make singular?
+  #has_many :appended_details  #ignore for now
 
-  belongs_to :asker
+  #belongs_to :asker
 
   #attr_accessible :  :email,:topic, :phone_number, :body, :created_at, :updated_at, :escalated, :needed_by 
+  
+  attr_accessor :body, :appended_info, :update_tag
+
   def escalate_to_admin
     self.update_attributes(:escalated => true)
 
@@ -24,5 +27,14 @@ class Question < ActiveRecord::Base
     end
     return false
   end
-
+  def SetQuestion(body)
+      self.body = body
+  end
+  def Add_Info(text)
+	self.update_tag = true
+	self.appended_info = text
+  end
+  def GetQuestion
+	return self.body, self.appended_info
+  end 
 end
