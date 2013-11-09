@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20130401062218) do
     t.string   "name"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",       :default => 0
-    t.integer  "User_rating",         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
