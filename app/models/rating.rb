@@ -9,17 +9,17 @@ class Rating < Field
 
   # Fetch the rating of the researcher if made visible 
   def GetRating()
-    if (self.hidden == true)    	
+    if (@hidden == true)    	
       return ''
     else	
-      return self.rating
+      return @rating
     end
   end
 
   # This will be used by an algorithm to constantly change the rating of a researcher
   def UpdateRating(point)
     @n += 1
-    @rating = (@rating + point) / n
+    @rating = (@rating + point) / @n
   end
   
 end
