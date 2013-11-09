@@ -27,4 +27,9 @@ class Researcher < User
   validates_presence_of :phone_number
   validates_uniqueness_of :email
 
+  # Update the researcher's rating
+  def AddRating(point)
+      @researcher_rating.UpdateRating point
+  end
+
 end

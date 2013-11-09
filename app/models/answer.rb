@@ -4,7 +4,26 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   belongs_to :answerer
 
+  # one to one relationship
+  has_one :rating :answered
+
   attr_accessible :rating
+
+  def rate(point)
+
+    # make sure the query is answered before it can be rated
+    if @answered
+      # create new rating object
+      rat = Rating.new
+      rat.rating = point
+      rat.save
+
+      # update the answerer's rating
+      @rating = rat
+      @answerer.AddRating(rat)
+
+    end
+  end
 
   def send_to_journalist
     if self.question.email.blank?
