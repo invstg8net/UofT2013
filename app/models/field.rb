@@ -1,13 +1,5 @@
-class Field < ActiveRecord::Base
-
-    attr_accessor :hidden
+class Field
     
-    def Hide()
-	self.hidden = true;    
-    end
-
-    def Show()
-	self.hidden = false;
-    end
+    attr_accessor :hidden
 
 end

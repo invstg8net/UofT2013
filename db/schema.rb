@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401062218) do
+ActiveRecord::Schema.define(:version => 20131111224728) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -28,15 +28,24 @@ ActiveRecord::Schema.define(:version => 20130401062218) do
     t.boolean "active",                         :default => true
   end
 
+  create_table "privacies", :force => true do |t|
+    t.integer "researcher_id"
+    t.integer "namepriv",      :default => 0
+    t.integer "emailpriv",     :default => 0
+    t.integer "phonepriv",     :default => 0
+    t.integer "expertisepriv", :default => 0
+  end
+
   create_table "questions", :force => true do |t|
     t.string   "email"
     t.string   "topic"
     t.string   "phone_number"
     t.text     "body"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.boolean  "escalated",    :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at"
+    t.boolean  "escalated",     :default => false
     t.datetime "needed_by"
+    t.string   "appended_info"
   end
 
   create_table "researchers", :force => true do |t|
@@ -55,6 +64,11 @@ ActiveRecord::Schema.define(:version => 20130401062218) do
     t.string   "last_sign_in_ip"
     t.boolean  "superuser",           :default => false
     t.boolean  "Is_Admin",            :default => false
+    t.integer  "max_questions",       :default => 3
+    t.integer  "textcap",             :default => 5
+    t.integer  "rating",              :default => 0
+    t.integer  "rating_n",            :default => 0
+    t.integer  "status",              :default => 0
     t.boolean  "activated",           :default => false
     t.string   "expertise"
     t.string   "pref_contact"

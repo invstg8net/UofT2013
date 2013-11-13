@@ -6,6 +6,7 @@ class ResearchersController < ApplicationController
   def create
     config.logger = Logger.new(STDOUT)
     @researcher = Researcher.new params[:researcher]
+    @researcher.setPrivacy
     @researcher.activated = false
     if @researcher.save
       redirect_to root_url + "sessions/new", :notice => "Signed up!"

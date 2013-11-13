@@ -1,8 +1,6 @@
-# require './field'
-
 class Name < Field
-
-    attr_accessor :name
+    
+    attr_writer :name
 
     def GetName()
 	if (self.hidden == true)    	
@@ -10,10 +8,6 @@ class Name < Field
 	else	
 		return self.name
 	end
-    end
-    
-    def SetName(name)
-        self.name = name
     end
 
 end

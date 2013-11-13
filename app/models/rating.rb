@@ -1,5 +1,5 @@
 class Rating < Field
-  attr_accessor :rating
+  attr_writer :rating
 
   def initialize
     @rating = 0

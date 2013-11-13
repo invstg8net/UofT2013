@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
 
     #Create the question
     if current_user
-      q = Question.new :asker => current_user :body => q_params[:body], :phone_number => Researcher.where("email = ?", current_user.email).first.phone_number, :email => current_user.email, :needed_by => q_params[:needed_by]
+      q = Question.new :body => q_params[:body], :phone_number => Researcher.where("email = ?", current_user.email).first.phone_number, :email => current_user.email, :needed_by => q_params[:needed_by]
       q.needed_by ||= Time.now + 5.days
       q.topic = (params[:expertise])[:topic]
       q.save
@@ -24,10 +24,10 @@ class QuestionsController < ApplicationController
       end
     render :thank_you
     else
-      q = Question.new :asker => current_user :body => q_params[:body], :phone_number => q_params[:phone_number], :email => q_params[:email], :needed_by => q_params[:needed_by]
+      q = Question.new :body => q_params[:body], :phone_number => q_params[:phone_number], :email => q_params[:email], :needed_by => q_params[:needed_by]
       @researcher = Researcher.new :phone_number => q_params[:phone_number], :email => q_params[:email], :password => q_params[:phone_number]
       @researcher.activated = false
-      if @researcher.save:
+      if @researcher.save
         q.needed_by ||= Time.now + 5.days
         q.topic = (params[:expertise])[:topic]
         q.save

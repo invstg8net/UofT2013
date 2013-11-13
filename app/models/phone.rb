@@ -1,6 +1,6 @@
 class Phone < Field
 
-    attr_accessor :phone
+    attr_writer :phone
 
     def GetPhone()
 	if (self.hidden == true)    	
@@ -10,7 +10,4 @@ class Phone < Field
 	end
     end
     
-    def SetPhone(phone)
-        self.phone = phone
-    end
 end

@@ -1,13 +1,6 @@
 class Question < ActiveRecord::Base
-  has_many :answer #make singular?
-  has_many :appended_details  #ignore for now
-
-  belongs_to :asker
-
-  attr_accessible :email, :topic, :phone_number, :body, :created_at, :updated_at, :escalated, :needed_by 
-  
-  attr_accessor :body, :appended_info, :update_tag
-
+  has_many :answers
+  #attr_accessible :  :email,:topic, :phone_number, :body, :created_at, :updated_at, :escalated, :needed_by 
   def escalate_to_admin
     self.update_attributes(:escalated => true)
 
@@ -15,7 +8,7 @@ class Question < ActiveRecord::Base
   end
 
   def send_to_researcher(researcher)
-    a = Answer.new :answerer => researcher, :question => self
+    a = Answer.new :researcher => researcher, :question => self
     InvestigateMailer.question_email(a).deliver if a.save
   end
 
@@ -27,17 +20,11 @@ class Question < ActiveRecord::Base
     end
     return false
   end
-
-  def SetQuestion(body)
-      self.body = body
+  
+  def append_info(text)
+      self.updated_at = Time.now
+      self.appended_info = text
   end
 
-  def Add_Info(text)
-	self.update_tag = true
-	self.appended_info = text
-  end
 
-  def GetQuestion
-	return self.body, self.appended_info
-  end 
 end

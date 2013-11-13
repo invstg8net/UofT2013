@@ -15,7 +15,11 @@
     </thead>
    
       <tr class="researcher">
+      <% if @researcher.privacy.namepriv != 0 %>
         <td><%= @researcher.name %></td>
+        <% else %>
+        <td></td>
+      <% end %>
         <td><%= @researcher.email %></td>
         <td><%= @researcher.phone_number %></td>
          <td><%= @researcher.expertise %></td>
