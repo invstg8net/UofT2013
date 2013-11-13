@@ -60,7 +60,11 @@ class ResearchersController < ApplicationController
 
 # Testing
   def browse
-
+    @researchers = Researcher.order('id ASC').all
+    @experts = Expert.all
+    @researchers.each do |r|
+	r.setPrivacy()
+    end
   end
 
   def update

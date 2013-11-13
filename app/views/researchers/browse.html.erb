@@ -9,8 +9,6 @@
     <th>Email</th>
     <th>Mobile Phone</th>
     <th>Join Date</th>
-    <th>Approv.</th>
-    <th>Admin Privileges</th>
     <th>Expertise</th>
     <th></th>
     </thead>
@@ -18,24 +16,24 @@
     <% @researchers.each do |r| %>
       <tr class="approved" id="q1">
         <td><%= r.id %></td>
-        <td><%= r.name %></td>
-        <td><%= r.email %></td>
-        <td><%= r.phone_number %></td>
+	<% if r.privacy.namepriv > 0 %>
+            <td><%= r.name %></td>
+        <% else %>
+            <td></td>
+	<% end %>
+
+	<% if r.privacy.emailpriv > 0 %>
+            <td><%= r.email %></td>
+        <% else %>
+            <td></td>
+	<% end %>
+
+	<% if r.privacy.phonepriv > 0 %>
+            <td><%= r.phone_number %></td>
+        <% else %>
+            <td></td>
+	<% end %>
         <td><%= r.created_at.strftime('%c') %></td>
-        <td>
-          <% if r.activated? %>
-            <%= link_to 'Deactivate', [:deactivate, :admin, r] %>
-          <% else %>
-            <%= link_to 'Activate', [:activate, :admin, r] %>
-          <% end %>
-        </td>
-        <td>
-          <% if r.Is_Admin? %>
-            <%= link_to 'Deactivate', [:deactivate_admin, :admin, r] %>
-          <% else %>
-            <%= link_to 'Activate', [:activate_admin, :admin, r] %>
-          <% end %>
-        </td>
         <td><%= r.expertise %></td>
       </tr>
     <% end %>
