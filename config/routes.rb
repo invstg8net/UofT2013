@@ -6,6 +6,8 @@ InvestigateNet::Application.routes.draw do
   get "admin/expert/new"
   post "admin/expert/new"
   
+  get "researchers/browse"
+
   get "researchers/questions" 
   get "questions" => "questions#new", :as => "new_question"
   

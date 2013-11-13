@@ -58,6 +58,11 @@ class ResearchersController < ApplicationController
     end
   end
 
+# Testing
+  def browse
+
+  end
+
   def update
     if current_user
       email = current_user.email
