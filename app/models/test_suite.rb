@@ -146,8 +146,15 @@ class Test_Suite < Test::Unit::TestCase
 #24
 	def test_Appending_Info_To_Question
 		@question.SetQuestion("This is the Body")
-		assert_equal @question.GetQuestion, ["This is the Body",nil]
-		@question.Add_Info("and this is the Additional Info")
-		assert_equal @question.GetQuestion, ["This is the Body","and this is the Additional Info"]
-	end 	
+		assert_equal @question.GetQuestion, "This is the Body"
+		@question.Add_Info(" and this is the Additional Info")
+		assert_equal @question.GetQuestion, "This is the Body and this is the Additional Info"
+	end 
+#25	
+	def test_Num_Of_Texts_Required
+		@textlengthcap.SetTextLengthCap(3)
+		assert_equal @textlengthcap.GetTextLengthCap(), 3
+		assert_equal @textlengthcap.OverThreshold(1000), "Your message will take 6 texts"
+	end
+		
 end
