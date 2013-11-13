@@ -1,7 +1,0 @@
-<h1>Sign Up</h1>
-<%= flash_message %>
-
-<%= form_for @researcher do |f| %>
- 
-<% end %>
-</body>
