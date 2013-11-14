@@ -48,7 +48,7 @@ class ResearchersController < ApplicationController
     if current_user
       email = current_user.email
       @researcher = Researcher.where("email = ?", email).first
-
+      #@privacy = @researcher.privacy
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @researcher }
