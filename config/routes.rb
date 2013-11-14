@@ -8,6 +8,9 @@ InvestigateNet::Application.routes.draw do
   
   get "researchers/browse"
 
+  # test
+  resources :privacies
+
   get "researchers/questions" 
   get "questions" => "questions#new", :as => "new_question"
   

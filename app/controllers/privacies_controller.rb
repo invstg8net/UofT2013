@@ -1,7 +1,17 @@
 class PrivaciesController < ApplicationController
 
+  def edit
+    if current_user
+      email = current_user.email
+      @researcher = Researcher.where("email = ?", email).first
+	  @privacy = @researcher.privacy
+    else
+      redirect_to root_url
+    end
+  end
+
 	def update
-		if current_user
+    	if current_user
 			email = current_user.email
 			@researcher = Researcher.where("email = ?", email).first
 			@privacy = @researcher.privacy

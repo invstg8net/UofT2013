@@ -26,11 +26,12 @@ class ResearchersController < ApplicationController
        redirect_to root_url
     end
   end
-
+	
   def account
     if current_user
       email = current_user.email
       @researcher = Researcher.where("email = ?", email)
+
     else
       redirect_to root_url
     end
@@ -44,11 +45,12 @@ class ResearchersController < ApplicationController
       redirect_to root_url
     end
   end
+
   def show
     if current_user
       email = current_user.email
       @researcher = Researcher.where("email = ?", email).first
-      #@privacy = @researcher.privacy
+      @privacy = @researcher.privacy
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @researcher }
