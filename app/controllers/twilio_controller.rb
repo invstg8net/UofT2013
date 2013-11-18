@@ -2,7 +2,7 @@ class Twilio3 < ActiveRecord::Base
 
 	def new
     	@question = Question.new
-  	end
+  end
 
 	def initialize
 	# put your own credentials here
@@ -29,6 +29,7 @@ class Twilio3 < ActiveRecord::Base
 		puts message.from
 		puts message.to
 		puts message.body
+	  end
 	end
 
 	def create
@@ -39,11 +40,12 @@ class Twilio3 < ActiveRecord::Base
 		puts message.from
 		puts message.to
 		puts message.body
-	        q_params = params[:question] || params
+	  q_params = params[:question] || params
 		end
-    		#Create the question
-    		q = Question.new :body => message.body, :phone_number => 123456789, :email => message.from, :needed_by => q_params[:needed_by]
-    		q.needed_by ||= Time.now + 5.days
-    		q.save
+		
+    #Create the question
+    q = Question.new :body => message.body, :phone_number => 123456789, :email => message.from, :needed_by => q_params[:needed_by]
+    q.needed_by ||= Time.now + 5.days
+    q.save
 	end
 end
