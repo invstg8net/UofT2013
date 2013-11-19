@@ -6,7 +6,7 @@ gem 'rails', '3.2.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'rufus-scheduler'
+gem 'rufus-scheduler', '2.0.24'
 gem 'sqlite3'
 gem 'pg'
 gem "bcrypt-ruby", :require => "bcrypt"
@@ -23,7 +23,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer'
+  #gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -36,6 +36,10 @@ gem 'simple_form', '~> 2.0.1'
 group :development do
   gem 'letter_opener'
   gem 'mail_view'
+end
+
+group :production do
+	gem 'therubyracer'
 end
 
 gem "twitter-bootstrap-rails"

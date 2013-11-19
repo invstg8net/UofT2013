@@ -1,0 +1,159 @@
+
+
+Started GET "/researchers/new" for 127.0.0.1 at 2013-11-18 20:50:48 -0500
+Processing by ResearchersController#new as HTML
+  [1m[36mExpert Load (0.0ms)[0m  [1mSELECT "experts".* FROM "experts" [0m
+  Rendered researchers/new.html.erb within layouts/application (141.0ms)
+Compiled application.css  (1ms)  (pid 6228)
+Compiled application.js  (0ms)  (pid 6228)
+Completed 200 OK in 444ms (Views: 305.0ms | ActiveRecord: 27.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-11-18 20:53:30 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1M+xCbQ/JfpeRWyI9Dc829rjaPzw2h2LZke0UMfe8Q4=", "email"=>"invstg8net@gmail.com", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."email" = 'invstg8net@gmail.com' LIMIT 1
+Redirected to http://localhost:3000/researchers/questions
+Completed 302 Found in 152ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/researchers/questions" for 127.0.0.1 at 2013-11-18 20:53:30 -0500
+Processing by ResearchersController#questions as HTML
+  [1m[36mResearcher Load (16.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mResearcher Load (1.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mSELECT question_id FROM "answers" WHERE (researcher_id = 1)[0m
+  [1m[35mAnswer Load (0.0ms)[0m  SELECT "answers".* FROM "answers" 
+  [1m[36mQuestion Load (0.0ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE (email = 'invstg8net@gmail.com')[0m
+  [1m[35mQuestion Load (0.0ms)[0m  SELECT "questions".* FROM "questions" WHERE 1=0
+  Rendered researchers/questions.html.erb within layouts/application (4.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+Completed 200 OK in 70ms (Views: 21.0ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/admin/researchers" for 127.0.0.1 at 2013-11-18 20:53:34 -0500
+Processing by Admin::ResearchersController#index as HTML
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mResearcher Load (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" ORDER BY id ASC
+  [1m[36mExpert Load (0.0ms)[0m  [1mSELECT "experts".* FROM "experts" [0m
+  Rendered admin/researchers/index.html.erb within layouts/application (7.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+Completed 200 OK in 28ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/questions" for 127.0.0.1 at 2013-11-18 20:55:18 -0500
+Processing by QuestionsController#new as HTML
+  [1m[36mResearcher Load (1.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mExpert Load (0.0ms)[0m  SELECT "experts".* FROM "experts" 
+  Rendered questions/new.html.erb within layouts/application (6.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+Completed 200 OK in 41ms (Views: 30.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2013-11-18 20:55:22 -0500
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dmeu7YNfjexIeAL1GuL8NqbFMq2JmozxbM9h47O0h1c=", "expertise"=>{"topic"=>"News"}, "question"=>{"needed_by"=>"2013-11-19 07:55:18 UTC", "body"=>"aavbbbb"}, "commit"=>"Create Question"}
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mResearcher Load (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (20.0ms)[0m  [1mINSERT INTO "questions" ("appended_info", "body", "created_at", "email", "escalated", "needed_by", "phone_number", "topic", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["appended_info", nil], ["body", "aavbbbb"], ["created_at", Tue, 19 Nov 2013 01:55:22 UTC +00:00], ["email", "invstg8net@gmail.com"], ["escalated", false], ["needed_by", Tue, 19 Nov 2013 07:55:18 UTC +00:00], ["phone_number", "+12898029128"], ["topic", "News"], ["updated_at", Tue, 19 Nov 2013 01:55:22 UTC +00:00]]
+  [1m[35m (184.0ms)[0m  commit transaction
+  [1m[36mResearcher Load (1.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."activated" = 't' ORDER BY RANDOM() LIMIT 3[0m
+  Rendered questions/thank_you.html.erb within layouts/application (1.0ms)
+  [1m[35mResearcher Load (1.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mResearcher Load (1.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+Completed 200 OK in 225ms (Views: 11.0ms | ActiveRecord: 207.0ms)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2013-11-18 20:55:25 -0500
+Processing by SessionsController#new as HTML
+  [1m[36mResearcher Load (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+Redirected to http://localhost:3000/researchers/questions
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/researchers/questions" for 127.0.0.1 at 2013-11-18 20:55:25 -0500
+Processing by ResearchersController#questions as HTML
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mResearcher Load (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SELECT question_id FROM "answers" WHERE (researcher_id = 1)
+  [1m[36mAnswer Load (0.0ms)[0m  [1mSELECT "answers".* FROM "answers" [0m
+  [1m[35mQuestion Load (0.0ms)[0m  SELECT "questions".* FROM "questions" WHERE (email = 'invstg8net@gmail.com')
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1 AND "answers"."answered" = 't' AND (body IS NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1 AND "answers"."answered" = 't' AND (body IS NULL)[0m
+  [1m[35mQuestion Load (0.0ms)[0m  SELECT "questions".* FROM "questions" WHERE 1=0
+  Rendered researchers/questions.html.erb within layouts/application (87.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+Completed 200 OK in 99ms (Views: 95.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/researchers/questions" for 127.0.0.1 at 2013-11-18 20:55:28 -0500
+Processing by ResearchersController#questions as HTML
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mResearcher Load (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SELECT question_id FROM "answers" WHERE (researcher_id = 1)
+  [1m[36mAnswer Load (0.0ms)[0m  [1mSELECT "answers".* FROM "answers" [0m
+  [1m[35mQuestion Load (0.0ms)[0m  SELECT "questions".* FROM "questions" WHERE (email = 'invstg8net@gmail.com')
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1 AND "answers"."answered" = 't' AND (body IS NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1 AND "answers"."answered" = 't' AND (body IS NULL)[0m
+  [1m[35mQuestion Load (0.0ms)[0m  SELECT "questions".* FROM "questions" WHERE 1=0
+  Rendered researchers/questions.html.erb within layouts/application (6.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/researchers/questions" for 127.0.0.1 at 2013-11-18 20:55:30 -0500
+Processing by ResearchersController#questions as HTML
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mResearcher Load (1.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  SELECT question_id FROM "answers" WHERE (researcher_id = 1)
+  [1m[36mAnswer Load (1.0ms)[0m  [1mSELECT "answers".* FROM "answers" [0m
+  [1m[35mQuestion Load (0.0ms)[0m  SELECT "questions".* FROM "questions" WHERE (email = 'invstg8net@gmail.com')
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1 AND "answers"."answered" = 't' AND (body IS NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = 1 AND "answers"."answered" = 't' AND (body IS NULL)[0m
+  [1m[35mQuestion Load (0.0ms)[0m  SELECT "questions".* FROM "questions" WHERE 1=0
+  Rendered researchers/questions.html.erb within layouts/application (5.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/questions/1" for 127.0.0.1 at 2013-11-18 20:55:39 -0500
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mResearcher Load (1.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mQuestion Load (0.0ms)[0m  [1mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mAnswer Load (0.0ms)[0m  SELECT "answers".* FROM "answers" WHERE "answers"."question_id" = 1
+  Rendered questions/show.html.erb within layouts/application (3.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/researchers" for 127.0.0.1 at 2013-11-18 20:55:45 -0500
+Processing by Admin::ResearchersController#index as HTML
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mResearcher Load (1.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35mResearcher Load (0.0ms)[0m  SELECT "researchers".* FROM "researchers" ORDER BY id ASC
+  [1m[36mExpert Load (0.0ms)[0m  [1mSELECT "experts".* FROM "experts" [0m
+  Rendered admin/researchers/index.html.erb within layouts/application (3.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE "researchers"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "researchers".* FROM "researchers" WHERE (email = 'invstg8net@gmail.com') LIMIT 1
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 1.0ms)
