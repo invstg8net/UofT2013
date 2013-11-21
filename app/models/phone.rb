@@ -2,11 +2,11 @@ class Phone < Field
 
     attr_writer :phone
 
-    def GetPhone()
-	if (self.hidden == true)    	
+    def getPhone()
+	if (self.hidden == 0)    	
 		return nil
 	else	
-		return self.phone
+		return @phone
 	end
     end
     

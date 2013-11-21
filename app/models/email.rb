@@ -2,11 +2,11 @@ class Email < Field
     
     attr_writer :email
     
-    def GetPhone()
-        if (self.hidden == true)
+    def getEmail()
+        if (self.hidden == 0)
             return nil
             else
-            return self.email
+            return @email
         end
     end
     

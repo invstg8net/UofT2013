@@ -18,17 +18,29 @@ attr_accessible :email, :password, :password_confirmation, :activated, :name, :p
           self.create_privacy
       end
       @namewrapper = Name.new
-      @namewrapper.name = :name
+      @namewrapper.name = self.name
       @namewrapper.hidden = self.privacy.namepriv
       
       @emailwrapper = Email.new
-      @emailwrapper.email = :email
+      @emailwrapper.email = self.email
       @emailwrapper.hidden = self.privacy.emailpriv
       
       @phonewrapper = Phone.new
-      @phonewrapper.phone = :phone_number
+      @phonewrapper.phone = self.phone_number
       @phonewrapper.hidden = self.privacy.phonepriv
       
+  end
+
+  def getName
+    return @namewrapper.getName
+  end
+
+  def getEmail
+    return @emailwrapper.getEmail
+  end
+
+  def getPhone
+    return @phonewrapper.getPhone
   end
   
   def self.authenticate(email, password)

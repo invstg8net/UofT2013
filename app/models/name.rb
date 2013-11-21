@@ -2,11 +2,11 @@ class Name < Field
     
     attr_writer :name
 
-    def GetName()
-	if (self.hidden == true)    	
-		return 'John Doe'
+    def getName()
+	if (self.hidden == 0)    	
+		return nil
 	else	
-		return self.name
+		return @name
 	end
     end
 

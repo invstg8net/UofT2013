@@ -16,23 +16,9 @@
     <% @researchers.each do |r| %>
       <tr class="approved" id="q1">
         <td><%= r.id %></td>
-	<% if r.privacy.namepriv > 0 %>
-            <td><%= r.name %></td>
-        <% else %>
-            <td></td>
-	<% end %>
-
-	<% if r.privacy.emailpriv > 0 %>
-            <td><%= r.email %></td>
-        <% else %>
-            <td></td>
-	<% end %>
-
-	<% if r.privacy.phonepriv > 0 %>
-            <td><%= r.phone_number %></td>
-        <% else %>
-            <td></td>
-	<% end %>
+        <td><%= r.getName() %></td>
+        <td><%= r.getEmail() %></td>
+        <td><%= r.getPhone() %></td>
         <td><%= r.created_at.strftime('%c') %></td>
         <td><%= r.expertise %></td>
       </tr>
