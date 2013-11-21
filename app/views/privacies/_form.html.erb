@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :namepriv %>
+    <%= f.select :namepriv, [['Private', 0], ['Friends Only', 1], ['Public', 2]] %>
   </div>
 <div class="field">
     <%= f.label :phone_number %><br />
-    <%= f.text_field :phonepriv %>
+    <%= f.select :phonepriv, [['Private', 0], ['Friends Only', 1], ['Public', 2]] %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.text_field :emailpriv %>
+    <%= f.select :emailpriv, [['Private', 0], ['Friends Only', 1], ['Public', 2]] %>
   </div>
 
   <div class="actions">

@@ -6,6 +6,7 @@ class ResearchersController < ApplicationController
   def create
     config.logger = Logger.new(STDOUT)
     @researcher = Researcher.new params[:researcher]
+    @researcher.expertise = (params[:expertise])[:topic] 
     @researcher.setPrivacy
     @researcher.activated = false
     if @researcher.save
