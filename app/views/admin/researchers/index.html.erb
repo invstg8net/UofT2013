@@ -23,14 +23,18 @@
         <td><%= r.phone_number %></td>
         <td><%= r.created_at.strftime('%c') %></td>
         <td>
-          <% if r.status > 0 %>
+          <% if r.id == 1 %>
+            Activated
+          <% elsif r.status > 0 %>
             <%= link_to 'Deactivate', [:deactivate, :admin, r] %>
           <% else %>
             <%= link_to 'Activate', [:activate, :admin, r] %>
           <% end %>
         </td>
         <td>
-          <% if r.Is_Admin? %>
+          <% if r.id == 1 %>
+            Activated
+          <% elsif r.Is_Admin? %>
             <%= link_to 'Deactivate', [:deactivate_admin, :admin, r] %>
           <% else %>
             <%= link_to 'Activate', [:activate_admin, :admin, r] %>

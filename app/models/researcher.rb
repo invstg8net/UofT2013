@@ -4,6 +4,8 @@ class Researcher < ActiveRecord::Base
 
 attr_accessible :email, :password, :password_confirmation, :status, :name, :phone_number, :mobile_number, :Is_Admin, :max_questions, :textcap, :rating, :rating_n
 
+#status -1 = ban, 0 = unactivated, 1 = active
+
   attr_accessor :password
   before_save :encrypt_password
   
