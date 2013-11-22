@@ -7,17 +7,25 @@ class Admin::ResearchersController < Admin::BaseController
 
   def activate
     @researcher = Researcher.find params[:id]
-    @researcher.update_attributes(:activated => true)
+    @researcher.update_attributes(:status => 1)
 
     redirect_to [:admin, :researchers]
   end
 
   def deactivate
     @researcher = Researcher.find params[:id]
-    @researcher.update_attributes(:activated => false)
+    @researcher.update_attributes(:status => 0)
 
     redirect_to [:admin, :researchers]
   end
+
+  def ban
+    @researcher = Researcher.find params[:id]
+    @researcher.update_attributes(:status => -1)
+
+    redirect_to [:admin, :researchers]
+  end
+  
   def activate_admin
     @researcher = Researcher.find params[:id]
     @researcher.update_attributes(:Is_Admin => true)

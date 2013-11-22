@@ -11,6 +11,8 @@ superuser.password = "password"
 superuser.email = "invstg8net@gmail.com"
 superuser.superuser = true
 superuser.phone_number = "+12898029128"
+superuser.status = 1
+superuser.Is_Admin = true
 superuser.save
 expert = Expert.new
 expert.topic = "News"

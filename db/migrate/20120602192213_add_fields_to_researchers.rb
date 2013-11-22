@@ -18,6 +18,5 @@ class AddFieldsToResearchers < ActiveRecord::Migration
     add_column :researchers, :textcap, :integer, :default => 5
     add_column :researchers, :rating, :integer, :default => 0
     add_column :researchers, :rating_n, :integer, :default => 0
-    add_column :researchers, :status, :integer, :default => 0
   end
 end

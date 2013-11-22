@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(:version => 20131111224728) do
     t.integer  "rating",              :default => 0
     t.integer  "rating_n",            :default => 0
     t.integer  "status",              :default => 0
-    t.boolean  "activated",           :default => false
     t.string   "expertise"
     t.string   "pref_contact"
   end

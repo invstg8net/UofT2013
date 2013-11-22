@@ -8,7 +8,6 @@ class ResearchersController < ApplicationController
     @researcher = Researcher.new params[:researcher]
     @researcher.expertise = (params[:expertise])[:topic] 
     @researcher.setPrivacy
-    @researcher.activated = false
     if @researcher.save
       redirect_to root_url + "sessions/new", :notice => "Signed up!"
     else
