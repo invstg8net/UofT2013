@@ -1,6 +1,8 @@
 InvestigateNet::Application.routes.draw do
  
   
+  resources :collaborators
+
   get "answers/new"
 
   get "admin/expert/new"
