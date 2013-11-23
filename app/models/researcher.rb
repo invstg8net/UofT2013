@@ -2,6 +2,7 @@ class Researcher < ActiveRecord::Base
   has_many :answers
   has_one :privacy
   has_many :collaborators
+  has_many :messages
 
 attr_accessible :email, :password, :password_confirmation, :status, :name, :phone_number, :mobile_number, :Is_Admin, :max_questions, :textcap, :rating, :rating_n
 

@@ -3379,3 +3379,131 @@ Migrating to CreateCollaborators (20131123212118)
   [1m[35m (1.0ms)[0m  PRAGMA index_list("privacies")
   [1m[36m (1.0ms)[0m  [1mPRAGMA index_list("questions")[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_list("researchers")
+  [1m[36m (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to Expert (1)
+Migrating to CreateQuestionsTable (20120602175842)
+Migrating to CreateAnswersTable (20120602181046)
+Migrating to CreateResearcherTable (20120602183136)
+Migrating to AddFieldsToResearchers (20120602192213)
+Migrating to AddActivatedFieldToUser (20120602193218)
+Migrating to AddExpertiseAndPrefContactToResearchers (20130313040602)
+Migrating to RemoveMobileNumberFromResearcher (20130401062218)
+Migrating to CreatePrivacyTable (20131111224728)
+Migrating to CreateCollaborators (20131123212118)
+Migrating to CreateMessages (20131123214806)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "researcher_id" integer, "sender" integer, "message" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131123214806')[0m
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("answers")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("collaborators")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("experts")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("messages")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("privacies")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("questions")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("researchers")[0m
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (10.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (4.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to Expert (1)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "experts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "topic" varchar(32) NOT NULL, "researcher_count" integer DEFAULT 1, "active" boolean DEFAULT 't') [0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('1')
+  [1m[36m (24.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateQuestionsTable (20120602175842)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "topic" varchar(255), "phone_number" varchar(255), "body" text, "created_at" datetime NOT NULL, "updated_at" datetime, "escalated" boolean DEFAULT 'false', "needed_by" datetime, "appended_info" varchar(255)) [0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120602175842')
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateAnswersTable (20120602181046)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "answered" boolean DEFAULT 'f', "body" text, "researcher_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120602181046')
+  [1m[36m (3.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreateResearcherTable (20120602183136)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "researchers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120602183136')
+  [1m[36m (18.0ms)[0m  [1mcommit transaction[0m
+Migrating to AddFieldsToResearchers (20120602192213)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "researchers" ADD "email" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "password_hash" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "researchers" ADD "password_salt" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "mobile_number" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "researchers" ADD "phone_number" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "name" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "researchers" ADD "remember_created_at" datetime[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "sign_in_count" integer DEFAULT 0
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "researchers" ADD "current_sign_in_at" datetime[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "last_sign_in_at" datetime
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "researchers" ADD "current_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "last_sign_in_ip" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "researchers" ADD "superuser" boolean DEFAULT 'f'[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "Is_Admin" boolean DEFAULT 'f'
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "researchers" ADD "max_questions" integer DEFAULT 3[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "textcap" integer DEFAULT 5
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "researchers" ADD "rating" integer DEFAULT 0[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "rating_n" integer DEFAULT 0
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120602192213')[0m
+  [1m[35m (18.0ms)[0m  commit transaction
+Migrating to AddActivatedFieldToUser (20120602193218)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  ALTER TABLE "researchers" ADD "status" integer DEFAULT 0
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120602193218')[0m
+  [1m[35m (5.0ms)[0m  commit transaction
+Migrating to AddExpertiseAndPrefContactToResearchers (20130313040602)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "researchers" ADD "expertise" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "researchers" ADD "pref_contact" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130313040602')
+  [1m[36m (26.0ms)[0m  [1mcommit transaction[0m
+Migrating to RemoveMobileNumberFromResearcher (20130401062218)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_researchers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "mobile_number" varchar(255), "phone_number" varchar(255), "name" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "superuser" boolean DEFAULT 'f', "Is_Admin" boolean DEFAULT 'f', "max_questions" integer DEFAULT 3, "textcap" integer DEFAULT 5, "rating" integer DEFAULT 0, "rating_n" integer DEFAULT 0, "status" integer DEFAULT 0, "expertise" varchar(255), "pref_contact" varchar(255)) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("researchers")
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "researchers"[0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "researchers"
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "researchers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "phone_number" varchar(255), "name" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "superuser" boolean DEFAULT 'f', "Is_Admin" boolean DEFAULT 'f', "max_questions" integer DEFAULT 3, "textcap" integer DEFAULT 5, "rating" integer DEFAULT 0, "rating_n" integer DEFAULT 0, "status" integer DEFAULT 0, "expertise" varchar(255), "pref_contact" varchar(255)) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("altered_researchers")
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "altered_researchers"[0m
+  [1m[35m (1.0ms)[0m  DROP TABLE "altered_researchers"
+  [1m[36m (0.0ms)[0m  [1mCREATE TEMPORARY TABLE "altered_researchers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "phone_number" varchar(255), "name" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "superuser" boolean DEFAULT 'f', "Is_Admin" boolean DEFAULT 'f', "max_questions" integer DEFAULT 3, "textcap" integer DEFAULT 5, "rating" integer DEFAULT 0, "rating_n" integer DEFAULT 0, "status" integer DEFAULT 0, "expertise" varchar(255), "pref_contact" varchar(255)) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("researchers")
+  [1m[36m (1.0ms)[0m  [1mSELECT * FROM "researchers"[0m
+  [1m[35m (0.0ms)[0m  DROP TABLE "researchers"
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "researchers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "phone_number" varchar(255), "name" varchar(255), "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "superuser" boolean DEFAULT 'f', "Is_Admin" boolean DEFAULT 'f', "max_questions" integer DEFAULT 3, "textcap" integer DEFAULT 5, "rating" integer DEFAULT 0, "rating_n" integer DEFAULT 0, "status" integer DEFAULT 0, "expertise" varchar(255), "pref_contact" varchar(255)) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("altered_researchers")
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "altered_researchers"[0m
+  [1m[35m (0.0ms)[0m  DROP TABLE "altered_researchers"
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130401062218')[0m
+  [1m[35m (18.0ms)[0m  commit transaction
+Migrating to CreatePrivacyTable (20131111224728)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "privacies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "researcher_id" integer, "namepriv" integer DEFAULT 0, "emailpriv" integer DEFAULT 0, "phonepriv" integer DEFAULT 0, "expertisepriv" integer DEFAULT 0) 
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131111224728')[0m
+  [1m[35m (37.0ms)[0m  commit transaction
+Migrating to CreateCollaborators (20131123212118)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "collaborators" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "researcher_id" integer, "collab_id" integer, "confirmed" boolean DEFAULT 'f', "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131123212118')[0m
+  [1m[35m (3.0ms)[0m  commit transaction
+Migrating to CreateMessages (20131123214806)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "researcher_id" integer, "sender" integer, "message" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131123214806')[0m
+  [1m[35m (24.0ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("answers")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("collaborators")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("experts")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("messages")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("privacies")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("questions")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("researchers")[0m

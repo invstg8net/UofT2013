@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131123212118) do
+ActiveRecord::Schema.define(:version => 20131123214806) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20131123212118) do
     t.string  "topic",            :limit => 32,                   :null => false
     t.integer "researcher_count",               :default => 1
     t.boolean "active",                         :default => true
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "researcher_id"
+    t.integer  "sender"
+    t.string   "message"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "privacies", :force => true do |t|
