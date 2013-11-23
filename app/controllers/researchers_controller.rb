@@ -60,6 +60,11 @@ class ResearchersController < ApplicationController
     end
   end
 
+# Add search page
+  def search
+
+  end
+
 # Testing
   def browse
     @researchers = Researcher.order('id ASC').all

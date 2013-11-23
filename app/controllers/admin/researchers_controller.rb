@@ -1,5 +1,9 @@
 class Admin::ResearchersController < Admin::BaseController
 
+  def search
+
+  end
+
   def index
     @researchers = Researcher.order('id ASC').all
     @experts = Expert.all

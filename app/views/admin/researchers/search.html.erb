@@ -10,7 +10,7 @@
 <div id ="user_nav" align = "center" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
 <h4>
 <% if current_user %>
-  <%= link_to "All", root_url + "researchers/browse" %>
+  <%= link_to "All (Admin)", root_url + "admin/researchers"  %>
 <% else %>
   <%= link_to "Sign up", sign_up_path %> ||
   <%= link_to "Log in", log_in_path %>
@@ -25,7 +25,7 @@
 <div id ="user_nav" align = "left" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
 <h4>
 <% if current_user %>
-  <%= link_to "Collaborator", root_url + "researchers/browse" %>
+  <%= link_to "Collaborator (Admin)", root_url + "admin/researchers"  %>
 <% else %>
   <%= link_to "Sign up", sign_up_path %> ||
   <%= link_to "Log in", log_in_path %>

@@ -12,6 +12,10 @@ InvestigateNet::Application.routes.draw do
   
   get "researchers/browse"
 
+  get "researchers/search"
+
+  get "admin/researchers/search"
+
   # test
   resources :privacies
 

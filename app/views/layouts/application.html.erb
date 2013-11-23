@@ -16,9 +16,9 @@
   <%= link_to "Account Info", root_url + "researchers/edit"  %> ||
   <%= link_to "Questions", root_url + "researchers/questions"  %>
   <% if (current_admin.Is_Admin || current_admin.superuser) %>
-    || <%= link_to "Browse Users (Admin)", root_url + "admin/researchers"  %>
+    || <%= link_to "Search", root_url + "admin/researchers/search"  %>
   <% else %>
-    || <%= link_to "Browse Users", root_url + "researchers/browse" %>
+    || <%= link_to "Search", root_url + "researchers/search" %>
   <% end %>
 <% else %>
   <%= link_to "Sign up", sign_up_path %> ||
