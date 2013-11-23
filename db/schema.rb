@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111224728) do
+ActiveRecord::Schema.define(:version => 20131123212118) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
     t.boolean  "answered",      :default => false
     t.text     "body"
     t.integer  "researcher_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "collaborators", :force => true do |t|
+    t.integer  "researcher_id"
+    t.integer  "collab_id"
+    t.boolean  "confirmed",     :default => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end
