@@ -1,6 +1,8 @@
 InvestigateNet::Application.routes.draw do
  
   
+  resources :messages
+
   resources :collaborators
 
   get "answers/new"
