@@ -26,7 +26,7 @@
           <% if r.id == 1 %>
             Activated
           <% elsif r.status > 0 %>
-            <%= link_to 'Deactivate', [:deactivate, :admin, r] %>
+            <%= link_to 'Deactivate', [:deactivate, :admin , r] %>
           <% else %>
             <%= link_to 'Activate', [:activate, :admin, r] %>
           <% end %>

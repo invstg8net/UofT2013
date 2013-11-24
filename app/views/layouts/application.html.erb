@@ -14,7 +14,8 @@
   Logged in as <%= current_user.email %> ||
   <%= link_to "Log out", log_out_path %> ||
   <%= link_to "Account Info", root_url + "researchers/edit"  %> ||
-  <%= link_to "Questions", root_url + "researchers/questions"  %>
+  <%= link_to "Questions", root_url + "researchers/questions"  %> ||
+  <%= link_to "Message Center", root_url + "messages"  %>
   <% if (current_admin.Is_Admin || current_admin.superuser) %>
     || <%= link_to "Search", root_url + "admin/researchers/search"  %>
   <% else %>

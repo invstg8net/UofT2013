@@ -70,7 +70,7 @@ class ResearchersController < ApplicationController
     @researchers = Researcher.order('id ASC').all
     @experts = Expert.all
     @researchers.each do |r|
-	r.setPrivacy()
+	      r.setPrivacy()
     end
   end
 

@@ -10,6 +10,7 @@
     <th>Mobile Phone</th>
     <th>Join Date</th>
     <th>Expertise</th>
+    <th>Send a Message</th>
     <th></th>
     </thead>
     <!-- Username Point -->
@@ -21,6 +22,7 @@
         <td><%= r.getPhone() %></td>
         <td><%= r.created_at.strftime('%c') %></td>
         <td><%= r.expertise %></td>
+        <td> <%= link_to "Contact User", root_url + "messages/new"  %></th>
       </tr>
     <% end %>
   </table>

@@ -1,6 +1,7 @@
 <h1>Listing messages</h1>
 
-<table>
+
+  <table class="table">
   <tr>
     <th>Sender</th>
     <th>Receiver</th>
@@ -9,11 +10,10 @@
     <th></th>
     <th></th>
   </tr>
-
-<% @messages.each do |message| %>
+<% @mymessages.each do |message| %>
   <tr>
     <td><%= message.sender %></td>
-    <td><%= message.receiver %></td>
+    <td><%= message.researcher_id %></td>
     <td><%= message.message %></td>
     <td><%= link_to 'Show', message %></td>
     <td><%= link_to 'Edit', edit_message_path(message) %></td>
