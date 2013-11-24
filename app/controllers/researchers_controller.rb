@@ -70,8 +70,17 @@ class ResearchersController < ApplicationController
     @researchers = Researcher.order('id ASC').all
     @experts = Expert.all
     @researchers.each do |r|
-	      r.setPrivacy()
+	r.setPrivacy()
     end
+  end
+
+  def collaborate(r)
+    #c = Collaborator.new :id => current_user.id, :collab_id => r.id, :confirmed => false
+    #c.save
+  end
+
+  def uncollaborate(r)
+
   end
 
   def update

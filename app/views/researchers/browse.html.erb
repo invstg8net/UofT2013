@@ -23,6 +23,7 @@
         <td><%= r.created_at.strftime('%c') %></td>
         <td><%= r.expertise %></td>
         <td> <%= link_to "Contact User", root_url + "messages/new"  %></th>
+        <td><%= link_to 'Collaborate', collaborate_collab_researcher_path(r) %></td>
       </tr>
     <% end %>
   </table>

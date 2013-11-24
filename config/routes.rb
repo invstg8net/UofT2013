@@ -55,6 +55,15 @@ InvestigateNet::Application.routes.draw do
     end
   end
 
+  
+  namespace :collab do
+    resources :researcher do
+      member do
+        get :collaborate
+      end
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
