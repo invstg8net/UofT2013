@@ -74,13 +74,20 @@ class ResearchersController < ApplicationController
     end
   end
 
-  def collaborate(r)
-    #c = Collaborator.new :id => current_user.id, :collab_id => r.id, :confirmed => false
-    #c.save
+  def collaborate  
+    save = Collaborator.create(:researcher_id => params[:current_user_id], :collab_id => :id)
+    # Check if the collaborator is saved to the database
+    if (!save)
+      puts "did not save!"
+    end
+    redirect_to [:researchers, :browse]
   end
 
-  def uncollaborate(r)
-
+  def uncollaborate
+    Collaborator.show_all
+    collaborator = Collaborator.find_by_researcher_id_and_collab_id(params[:current_user_id], :id)
+    Collaborator.delete(collaborator.id)
+    redirect_to [:researchers, :browse]
   end
 
   def update

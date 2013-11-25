@@ -1,9 +1,8 @@
 InvestigateNet::Application.routes.draw do
  
-  
-  resources :messages
+  root :to => "http://localhost#index"  
 
-  resources :collaborators
+  resources :messages, :collaborators, :privacies, :sessions
 
   get "answers/new"
 
@@ -16,21 +15,13 @@ InvestigateNet::Application.routes.draw do
 
   get "admin/researchers/search"
 
-  # test
-  resources :privacies
-
   get "researchers/questions" 
   get "questions" => "questions#new", :as => "new_question"
   
-
   post "user_session/new"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "researchers#new", :as => "sign_up"
-
-  root :to => "http://localhost#index"  
-
-  resources :sessions
   
   devise_for :admins
 
@@ -38,7 +29,6 @@ InvestigateNet::Application.routes.draw do
   resources :answers, :only => [:show, :edit, :update] do
     get :no_answer, :on => :member
   end
-  resources :researchers
 
   namespace :admin do
     resources :questions, :only => [:index, :show]
@@ -55,14 +45,13 @@ InvestigateNet::Application.routes.draw do
     end
   end
 
-  
-  namespace :collab do
-    resources :researcher do
-      member do
-        get :collaborate
-      end
+  resources :researchers do
+    member do
+      get :collaborate
+      get :uncollaborate
     end
   end
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
