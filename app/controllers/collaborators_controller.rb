@@ -2,7 +2,7 @@ class CollaboratorsController < ApplicationController
   # GET /collaborators
   # GET /collaborators.json
   def index
-    @collaborators = Collaborator.all
+    @collaborators = current_user.collaborators.all
 
     respond_to do |format|
       format.html # index.html.erb

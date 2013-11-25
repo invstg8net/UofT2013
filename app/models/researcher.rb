@@ -21,6 +21,10 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :phon
       if self.privacy.nil?
           self.create_privacy
       end
+      #poor style, but set up collab table here too
+      #if self.collaborators.nil?
+       #   self.create_collaborators
+      #end
       @namewrapper = Name.new
       @namewrapper.name = self.name
       @namewrapper.hidden = self.privacy.namepriv
@@ -45,6 +49,15 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :phon
 
   def getPhone
     return @phonewrapper.getPhone
+  end
+
+  def inCollaborators(researcher)
+    self.collaborators.each do |collab|
+      if collab.collab_id == researcher.id
+        return true
+      end
+    end
+    return false
   end
   
   def self.authenticate(email, password)

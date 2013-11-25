@@ -72,20 +72,32 @@ class ResearchersController < ApplicationController
     @researchers.each do |r|
 	r.setPrivacy()
     end
+    @collaborators = current_user.collaborators
   end
 
-  def collaborate  
-    save = Collaborator.create(:researcher_id => params[:current_user_id], :collab_id => :id)
+  def collaborate
+    #@newcollab = Collaborator.new :researcher_id => params[:current_user_id], :collab_id => :id, :confirmed => false
+    #@newcollab = Collaborator.create(:researcher_id => params[:current_user_id], :collabid => 1, :confirmed => false)
+    @newcollab = current_user.collaborators.create(:collabid => 2, :confirmed => false)
+    #@newcollab = Collaborator.new
+    #@newcollab.write_attribute(:researcher_id, 2)
+    #@newcollab.confirmed = false
+    #@newcollab.collab_id = 2
+    #@newcollab.save
     # Check if the collaborator is saved to the database
-    if (!save)
-      puts "did not save!"
+    if @newcollab.valid?
+    #if @newcollab.confirmed == false
+      redirect_to root_url + "sessions/new", :notice => "Collaborated!"
+    else
+      #redirect_to root_url + "sessions/new", :notice => "Didn't collaborate!"
     end
     redirect_to [:researchers, :browse]
   end
 
   def uncollaborate
     Collaborator.show_all
-    collaborator = Collaborator.find_by_researcher_id_and_collab_id(params[:current_user_id], :id)
+    #collaborator = Collaborator.find_by_researcher_id_and_collab_id(params[:current_user_id], :id)
+    collaborator = current_user.collaborators.where(:researcher_id => current_user.id, :collabid => :id).first
     Collaborator.delete(collaborator.id)
     redirect_to [:researchers, :browse]
   end

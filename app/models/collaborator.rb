@@ -2,9 +2,9 @@ class Collaborator < ActiveRecord::Base
 	#a "friend list" for a researcher. collab_id is the id of a researcher who is a friend
 	belongs_to :researcher
 
-	attr_accessible :researcher_id, :collab_id, :confirmed
+	attr_accessible :researcher_id, :collabid, :confirmed
 
-	validates_presence_of :collab_id
+	#validates_presence_of :collabid
 	validates_presence_of :confirmed
 
   def show

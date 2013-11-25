@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20131123214806) do
 
   create_table "collaborators", :force => true do |t|
     t.integer  "researcher_id"
-    t.integer  "collab_id"
+    t.integer  "collabid"
     t.boolean  "confirmed",     :default => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
