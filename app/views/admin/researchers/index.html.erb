@@ -9,9 +9,9 @@
     <th>Email</th>
     <th>Mobile Phone</th>
     <th>Join Date</th>
-    <th>Expertise</th>
     <th>Approv.</th>
     <th>Admin Privileges</th>
+    <th>Expertise</th>
     <th>Send a Message</th>
     <th>Request Collab</th>
     <th></th>
@@ -45,12 +45,12 @@
         <td><%= r.expertise %></td>
         <td> <%= link_to "Contact User", root_url + "messages/new"  %></th>
         <% if current_user.inCollaborators(r) %>
-            <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(r, :target_user_id => r.id) %></td>
+            <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(r, :target_user_id => r.id, :location => "browse") %></td>
         <% else %>
             <% if r.id != current_user.id %>
                 <td><%= link_to 'Collaborate', collaborate_researcher_path(r, :target_user_id => r.id) %></td>
             <% else %>
-                <td></td>
+                <td>---</td>
             <% end %>
         <% end %>
       </tr>

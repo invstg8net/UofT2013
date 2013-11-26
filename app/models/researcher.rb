@@ -21,34 +21,42 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
       if self.privacy.nil?
           self.create_privacy
       end
-      #poor style, but set up collab table here too
-      #if self.collaborators.nil?
-       #   self.create_collaborators
-      #end
-      @namewrapper = Name.new
-      @namewrapper.name = self.name
-      @namewrapper.hidden = self.privacy.namepriv
-      
-      @emailwrapper = Email.new
-      @emailwrapper.email = self.email
-      @emailwrapper.hidden = self.privacy.emailpriv
-      
-      @phonewrapper = Phone.new
-      @phonewrapper.phone = self.phone_number
-      @phonewrapper.hidden = self.privacy.phonepriv
-      
   end
 
   def getName(asker)
-    return @namewrapper.getName(inCollaborators(asker))
+    if (self.privacy.namepriv == 2)     #public
+      return self.name
+    elsif (self.privacy.namepriv == 1 and inCollaborators(asker))  #available to collaborators
+      return self.name
+    elsif (asker == self)   #displaying for self
+      return self.name
+    else
+      return "---"
+    end
   end
 
   def getEmail(asker)
-    return @emailwrapper.getEmail(inCollaborators(asker))
+    if (self.privacy.emailpriv == 2)     
+      return self.email
+    elsif (self.privacy.emailpriv == 1 and inCollaborators(asker))  
+      return self.name
+    elsif (asker == self)
+      return self.email
+    else
+      return "---"
+    end
   end
 
   def getPhone(asker)
-    return @phonewrapper.getPhone(inCollaborators(asker))
+    if (self.privacy.phonepriv == 2)     
+      return self.phone_number 
+    elsif (self.privacy.phonepriv == 1 and inCollaborators(asker))  
+      return self.phone_number
+    elsif (asker == self)
+      return self.phone_number
+    else
+      return "---"
+    end
   end
 
   def inCollaborators(researcher)

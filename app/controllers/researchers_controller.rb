@@ -93,13 +93,25 @@ class ResearchersController < ApplicationController
     #send a message to this user
     @newmessage = Message.new :sender => current_user.id, :researcher_id => params[:target_user_id], :message => "User #{current_user.id} has sent a collaboration request."
     @newmessage.save
-    redirect_to [:researchers, :browse]
+    if current_user.Is_Admin
+      redirect_to [:admin, :researchers]
+    else
+      redirect_to [:researchers, :browse]
+    end
   end
 
   def uncollaborate
     collaborator = current_user.collaborators.where(:researcher_id => current_user.id, :collabid => params[:target_user_id]).first
     Collaborator.delete(collaborator.id)
-    redirect_to [:researchers, :browse]
+    if params[:location] == "browse"
+      if current_user.Is_Admin
+        redirect_to [:admin, :researchers]
+      else
+        redirect_to [:researchers, :browse]
+      end
+    elsif params[:location] == "collaborators"
+      redirect_to [:researchers, :collaborators]
+    end
   end
 
   def update

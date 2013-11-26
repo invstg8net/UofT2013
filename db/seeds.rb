@@ -13,6 +13,7 @@ superuser.superuser = true
 superuser.phone_number = "+12898029128"
 superuser.status = 1
 superuser.Is_Admin = true
+superuser.expertise = "invstg8.net"
 superuser.save
 expert = Expert.new
 expert.topic = "News"

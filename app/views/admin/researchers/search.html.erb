@@ -48,7 +48,7 @@
 <div id ="user_nav" align = "left" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
 <h4>
 <% if current_user %>
-  <%= link_to "Collaborator (Admin)", root_url + "admin/researchers"  %>
+  <%= link_to "My Collaborators", root_url + "researchers/collaborators"  %>
 <% else %>
   <%= link_to "Sign up", sign_up_path %> ||
   <%= link_to "Log in", log_in_path %>
