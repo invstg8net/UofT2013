@@ -1,13 +1,23 @@
 <header>
   <h1></h1>
-
 </header>
 
 <div>
 <p></p>
 </div>
 
-<div id ="user_nav" align = "center" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
+<div id="search" align="center" vertical-align="middle">
+  <header>
+  	<h2>Search</h2>
+  </header>
+  <% form_tag "something goes here" %>
+  	<p>
+  		<%= text_field_tag "search[name]", params.has_key?("search") && params[:search].has_key?("name") ? params[:search][:name] : "" %>
+  		<%= submit_tag " Search Database Records " %>
+  	</p>
+</div>
+
+<div id ="user_nav" align = "left" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
 <h4>
 <% if current_user %>
   <%= link_to "All", root_url + "researchers/browse" %>
@@ -25,7 +35,7 @@
 <div id ="user_nav" align = "left" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
 <h4>
 <% if current_user %>
-  <%= link_to "Collaborator", root_url + "researchers/browse" %>
+  <%= link_to "My Collaborators", root_url + "researchers/browse" %>
 <% else %>
   <%= link_to "Sign up", sign_up_path %> ||
   <%= link_to "Log in", log_in_path %>

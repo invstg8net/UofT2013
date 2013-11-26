@@ -11,22 +11,26 @@
     <th>Join Date</th>
     <th>Expertise</th>
     <th>Send a Message</th>
-    <th></th>
+    <th>Request Collab</th>
     </thead>
     <!-- Username Point -->
     <% @researchers.each do |r| %>
       <tr class="approved" id="q1">
         <td><%= r.id %></td>
-        <td><%= r.getName() %></td>
-        <td><%= r.getEmail() %></td>
-        <td><%= r.getPhone() %></td>
+        <td><%= r.getName(current_user) %></td>
+        <td><%= r.getEmail(current_user) %></td>
+        <td><%= r.getPhone(current_user) %></td>
         <td><%= r.created_at.strftime('%c') %></td>
         <td><%= r.expertise %></td>
         <td> <%= link_to "Contact User", root_url + "messages/new"  %></th>
         <% if current_user.inCollaborators(r) %>
             <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(r, :target_user_id => r.id) %></td>
         <% else %>
-            <td><%= link_to 'Collaborate', collaborate_researcher_path(r, :target_user_id => r.id) %></td>
+            <% if r.id != current_user.id %>
+                <td><%= link_to 'Collaborate', collaborate_researcher_path(r, :target_user_id => r.id) %></td>
+            <% else %>
+                <td></td>
+            <% end %>
         <% end %>
       </tr>
     <% end %>

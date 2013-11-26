@@ -39,16 +39,16 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :phon
       
   end
 
-  def getName
-    return @namewrapper.getName
+  def getName(asker)
+    return @namewrapper.getName(inCollaborators(asker))
   end
 
-  def getEmail
-    return @emailwrapper.getEmail
+  def getEmail(asker)
+    return @emailwrapper.getEmail(inCollaborators(asker))
   end
 
-  def getPhone
-    return @phonewrapper.getPhone
+  def getPhone(asker)
+    return @phonewrapper.getPhone(inCollaborators(asker))
   end
 
   def inCollaborators(researcher)

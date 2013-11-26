@@ -75,8 +75,12 @@ class ResearchersController < ApplicationController
   end
 
   def collaborate
+    #add this user to collaborator table
     @newcollab = Collaborator.new :researcher_id => current_user.id, :collabid => params[:target_user_id]
     @newcollab.save
+    #send a message to this user
+    @newmessage = Message.new :sender => current_user.id, :researcher_id => params[:target_user_id], :message => "User #{current_user.id} has sent a collaboration request."
+    @newmessage.save
     redirect_to [:researchers, :browse]
   end
 
