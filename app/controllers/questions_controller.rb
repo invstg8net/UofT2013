@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
       q = Question.new :body => q_params[:body], :phone_number => Researcher.where("email = ?", current_user.email).first.phone_number, :email => current_user.email, :needed_by => q_params[:needed_by]
       q.needed_by ||= Time.now + 5.days
       q.topic = (params[:expertise])[:topic]
+      #q.researcher_id
       q.save
 #, :risk_level => q_params[:risk_level], :region => q_params[:region]
 
@@ -26,7 +27,7 @@ class QuestionsController < ApplicationController
     else
       q = Question.new :body => q_params[:body], :phone_number => q_params[:phone_number], :email => q_params[:email], :needed_by => q_params[:needed_by]
       @researcher = Researcher.new :phone_number => q_params[:phone_number], :email => q_params[:email], :password => q_params[:phone_number]
-      @researcher.activated = false
+      @researcher.status = 0
       if @researcher.save
         q.needed_by ||= Time.now + 5.days
         q.topic = (params[:expertise])[:topic]

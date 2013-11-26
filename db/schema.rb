@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20131123214806) do
     t.boolean  "escalated",     :default => false
     t.datetime "needed_by"
     t.string   "appended_info"
+    t.integer  "researcher_id"
   end
 
   create_table "researchers", :force => true do |t|
