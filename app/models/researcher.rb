@@ -53,7 +53,7 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :phon
 
   def inCollaborators(researcher)
     self.collaborators.each do |collab|
-      if collab.collab_id == researcher.id
+      if collab.collabid == researcher.id
         return true
       end
     end
