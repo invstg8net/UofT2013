@@ -65,6 +65,14 @@ class ResearchersController < ApplicationController
 
   end
 
+  def search_results
+
+  end
+
+  def collaborators
+
+  end
+
 # Testing
   def browse
     @researchers = Researcher.order('id ASC').all

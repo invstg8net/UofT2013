@@ -14,6 +14,18 @@
   	<p>
   		<%= text_field_tag "search[name]", params.has_key?("search") && params[:search].has_key?("name") ? params[:search][:name] : "" %>
   		<%= submit_tag " Search Database Records " %>
+        <% if false %>
+          url for search result: localhost:3000/researchers/search_results
+          The html file is views/researchers/search_results.html.erb
+         
+          <% form_tag documents_path, :method => 'get' do %>
+            <div id="search">
+              <%= link_to("Show All") if params[:q] %>
+              <%= text_field_tag :q, params[:q] %>
+              <%= submit_tag "Search", :name => nil, :id => 'search_submit' %>
+            </div>
+          <% end %>
+        <% end %>
   	</p>
 </div>
 
@@ -35,7 +47,7 @@
 <div id ="user_nav" align = "left" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
 <h4>
 <% if current_user %>
-  <%= link_to "My Collaborators", root_url + "researchers/browse" %>
+  <%= link_to "My Collaborators", root_url + "researchers/collaborators" %>
 <% else %>
   <%= link_to "Sign up", sign_up_path %> ||
   <%= link_to "Log in", log_in_path %>

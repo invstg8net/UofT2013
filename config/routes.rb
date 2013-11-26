@@ -13,6 +13,10 @@ InvestigateNet::Application.routes.draw do
 
   get "researchers/search"
 
+  get "researchers/search_results"
+
+  get "researchers/collaborators"
+
   get "admin/researchers/search"
 
   get "researchers/questions" 
