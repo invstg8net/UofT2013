@@ -6,6 +6,8 @@ class AddFieldsToResearchers < ActiveRecord::Migration
     add_column :researchers, :mobile_number, :string
     add_column :researchers, :phone_number, :string
     add_column :researchers, :name, :string
+    add_column :researchers, :pseudonym, :string
+    add_column :researchers, :region, :string
     add_column :researchers, :remember_created_at, :datetime
     add_column :researchers, :sign_in_count, :integer, :default => 0
     add_column :researchers, :current_sign_in_at, :datetime
