@@ -1,5 +1,33 @@
-<header>
-  <h1></h1>
-</header>
+<div class="container">
+  <header>
+    <h2>Collaborators</h2>
+  </header>
+  <table class="table">
+    <thead>
+    <th>id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile Phone</th>
+    <th>Join Date</th>
+    <th>Expertise</th>
+    <th>Send a Message</th>
+    </thead>
+    <!-- Username Point -->
+    <% @collaborators.each do |c| %>
+      <tr class="approved" id="q1">
+        <td><%= c.getResearcher.id %></td>
+        <td><%= c.getResearcher.getName(current_user) %></td>
+        <td><%= c.getResearcher.getEmail(current_user) %></td>
+        <td><%= c.getResearcher.getPhone(current_user) %></td>
+        <td><%= c.getResearcher.created_at.strftime('%c') %></td>
+        <td><%= c.getResearcher.expertise %></td>
+        <td> <%= link_to "Contact User", root_url + "messages/new"  %></th>
+        <% if current_user.inCollaborators(c.getResearcher) %>
+            <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(c.getResearcher, :target_user_id => c.getResearcher.id) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div><!--container-->
 
 

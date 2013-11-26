@@ -13,4 +13,10 @@ class Collaborator < ActiveRecord::Base
   def Collaborator.show_all
     find(:all).each { |collaborator| collaborator.show; puts}
   end
+
+  def getResearcher
+    r = Researcher.where("id = ?", collabid).first
+    r.setPrivacy
+    return r
+  end
 end

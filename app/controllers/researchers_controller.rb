@@ -82,6 +82,10 @@ class ResearchersController < ApplicationController
     end
   end
 
+  def collaborators
+    @collaborators = current_user.collaborators
+  end
+
   def collaborate
     #add this user to collaborator table
     @newcollab = Collaborator.new :researcher_id => current_user.id, :collabid => params[:target_user_id]
