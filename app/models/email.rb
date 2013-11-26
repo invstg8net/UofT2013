@@ -2,12 +2,14 @@ class Email < Field
     
     attr_writer :email
     
-    def getEmail()
-        if (self.hidden == 0)
-            return nil
-            else
-            return @email
-        end
+    def getEmail(isColab)
+		if (self.hidden == 2)    	
+			return @email
+		elsif (self.hidden == 1 and isColab)	
+			return @name
+		else
+			return nil
+		end
     end
     
 end

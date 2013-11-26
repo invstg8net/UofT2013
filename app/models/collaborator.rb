@@ -4,8 +4,7 @@ class Collaborator < ActiveRecord::Base
 
 	attr_accessible :researcher_id, :collabid, :confirmed
 
-	#validates_presence_of :collabid
-	validates_presence_of :confirmed
+	validates_presence_of :collabid
 
   def show
     Collaborator.columns.each {|col| print send(col.name), "\t"}
@@ -13,5 +12,11 @@ class Collaborator < ActiveRecord::Base
 
   def Collaborator.show_all
     find(:all).each { |collaborator| collaborator.show; puts}
+  end
+
+  def getResearcher
+    r = Researcher.where("id = ?", collabid).first
+    r.setPrivacy
+    return r
   end
 end

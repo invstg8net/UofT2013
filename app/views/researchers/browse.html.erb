@@ -1,7 +1,7 @@
-<header>
-  <h1></h1>
-</header>
 <div class="container">
+  <header>
+    <h2>Users</h2>
+  </header>
   <table class="table">
     <thead>
     <th>id</th>
@@ -11,44 +11,28 @@
     <th>Join Date</th>
     <th>Expertise</th>
     <th>Send a Message</th>
-    <th></th>
+    <th>Request Collab</th>
     </thead>
     <!-- Username Point -->
     <% @researchers.each do |r| %>
       <tr class="approved" id="q1">
         <td><%= r.id %></td>
-        <td><%= r.getName() %></td>
-        <td><%= r.getEmail() %></td>
-        <td><%= r.getPhone() %></td>
+        <td><%= r.getName(current_user) %></td>
+        <td><%= r.getEmail(current_user) %></td>
+        <td><%= r.getPhone(current_user) %></td>
         <td><%= r.created_at.strftime('%c') %></td>
         <td><%= r.expertise %></td>
         <td> <%= link_to "Contact User", root_url + "messages/new"  %></th>
         <% if current_user.inCollaborators(r) %>
-            <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(r, :current_user_id => current_user.id) %></td>
+            <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(r, :target_user_id => r.id) %></td>
         <% else %>
-            <td><%= link_to 'Collaborate', collaborate_researcher_path(r, :current_user_id => current_user.id) %></td>
+            <% if r.id != current_user.id %>
+                <td><%= link_to 'Collaborate', collaborate_researcher_path(r, :target_user_id => r.id) %></td>
+            <% else %>
+                <td></td>
+            <% end %>
         <% end %>
       </tr>
     <% end %>
   </table>
-
-  <header>
-    <h2>CollabList for Testing</h2>
-  </header>
-  <table class="table">
-    <thead>
-    <th>table id</th>
-    <th>your id</th>
-    <th>collab_id</th>
-    <th>Confrimed</th>
-    </thead>
-    <% @collaborators.each do |c| %>
-        <tr class="swag?" id="swag">
-            <td><% c.id %></td>
-            <td><% c.researcher_id %></td>
-            <td><% c.collab_id %></td>
-            <td><% c.confirmed %></td>
-        </tr>
-    <% end %>
-</table>
 </div><!--container-->
