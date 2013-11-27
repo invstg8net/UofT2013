@@ -56,6 +56,12 @@ InvestigateNet::Application.routes.draw do
     end
   end
   
+  resources :messages do
+    member do
+      get :reply
+    end
+  end
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

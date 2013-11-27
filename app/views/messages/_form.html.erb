@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :From %><br />
-    <%= f.text_field :sender %>
+    <%= f.text_field :sender, :value => current_user.id %>
   </div>
   <div class="field">
     <%= f.label :To %><br />
-    <%= f.text_field :researcher_id %>
+    <%= f.text_field :researcher_id, :value => @target %>
   </div>
   <div class="field">
     <%= f.label :Body %><br />
-    <%= f.text_field :message %>
+    <%= f.text_area :message %>
   </div>
   <div class="actions">
     <%= f.submit %>

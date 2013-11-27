@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
+    @target = params[:target_user_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,13 @@ class MessagesController < ApplicationController
   # GET /messages/1/edit
   def edit
     @message = Message.find(params[:id])
+    @target = params[:target_user_id]
+  end
+
+  # GET /messages/1/reply
+  def reply
+    @message = Message.find(params[:id])
+    @target = params[:target_user_id]
   end
 
   # POST /messages

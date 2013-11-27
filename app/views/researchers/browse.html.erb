@@ -23,7 +23,7 @@
         <td><%= r.created_at.strftime('%c') %></td>
         <td><%= r.expertise %></td>
         <% if r.id != current_user.id %>
-            <td><%= link_to "Contact User", root_url + "messages/new"  %></td>
+            <td> <%= link_to "Contact User", new_message_path(:target_user_id => r.id)  %></th>
         <% else %>
             <td>---</td>
         <% end %>

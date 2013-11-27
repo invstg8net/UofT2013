@@ -43,7 +43,7 @@
           <% end %>
         </td>
         <td><%= r.expertise %></td>
-        <td> <%= link_to "Contact User", root_url + "messages/new"  %></th>
+        <td> <%= link_to "Contact User", new_message_path(:target_user_id => r.id)  %></td>
         <% if current_user.inCollaborators(r) %>
             <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(r, :target_user_id => r.id, :location => "browse") %></td>
         <% else %>
