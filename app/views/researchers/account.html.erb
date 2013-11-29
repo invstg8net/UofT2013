@@ -16,7 +16,13 @@
         <td><%= r.name %></td>
         <td><%= r.email %></td>
         <td><%= r.phone_number %></td>
-        <td><%= r.status %></td> 
+        <% if @researcher.status == 1 %>
+          <td><%= "Active" %></td>
+        <% elsif @researcher.status == 0 %>
+          <td><%= "Deactivated" %></td>
+        <% elsif @researcher.status == -1 %>
+          <td><%= "Banned" %></td>
+        <% end %>
         
       </tr>
     <% end %>

@@ -3,8 +3,7 @@
 
   <table class="table">
   <tr>
-    <th>Sender</th>
-    <th>Receiver</th>
+    <th>From</th>
     <th>Message</th>
     <th></th>
     <th></th>
@@ -12,8 +11,7 @@
   </tr>
 <% @mymessages.each do |message| %>
   <tr>
-    <td><%= message.sender %></td>
-    <td><%= message.researcher_id %></td>
+    <td><%= Researcher.where("id = ?", message.sender).first.getPseudonym(current_user) %></td>
     <td><%= message.message %></td>
     <td><%= link_to 'Show', message %></td>
     <% if message.sender != current_user.id %>    

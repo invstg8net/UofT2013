@@ -2,19 +2,19 @@
 
 <p>
   <b>Sender:</b>
-  <%= @message.sender %>
+  <%= Researcher.where("id = ?", @message.sender).first.getPseudonym(current_user) %>
 </p>
 <br />
 <p>
-  <b>Receiver's ID:</b>
-  <%= @message.researcher_id %>
+  <b>To:</b>
+  <%= Researcher.where("id = ?", @message.researcher_id).first.getPseudonym(current_user) %>
 </p>
 <br />
 <p>
-  <b>Message:</b>
+  <b>Message:</b><br />
   <%= @message.message %>
 </p>
 
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Reply', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>

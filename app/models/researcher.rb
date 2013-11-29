@@ -24,7 +24,7 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
   end
 
   def getName(asker)
-    if (self.privacy.namepriv == 2)     #public
+    if (self.privacy.namepriv == 2 or asker.Is_Admin)     #public
       return self.name
     elsif (self.privacy.namepriv == 1 and inCollaborators(asker))  #available to collaborators
       return self.name
@@ -35,8 +35,32 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
     end
   end
 
+  def getPseudonym(asker)
+    if (self.privacy.pseudonympriv == 2 or asker.Is_Admin)     #public
+      return self.pseudonym
+    elsif (self.privacy.pseudonympriv == 1 and inCollaborators(asker))  #available to collaborators
+      return self.pseudonym
+    elsif (asker == self)   #displaying for self
+      return self.pseudonym
+    else
+      return "Anonymous"
+    end
+  end
+
+  def getRegion(asker)
+    if (self.privacy.regionpriv == 2 or asker.Is_Admin)     #public
+      return self.region
+    elsif (self.privacy.regionpriv == 1 and inCollaborators(asker))  #available to collaborators
+      return self.region
+    elsif (asker == self)   #displaying for self
+      return self.region
+    else
+      return "---"
+    end
+  end
+
   def getEmail(asker)
-    if (self.privacy.emailpriv == 2)     
+    if (self.privacy.emailpriv == 2 or asker.Is_Admin)     
       return self.email
     elsif (self.privacy.emailpriv == 1 and inCollaborators(asker))  
       return self.name
@@ -48,7 +72,7 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
   end
 
   def getPhone(asker)
-    if (self.privacy.phonepriv == 2)     
+    if (self.privacy.phonepriv == 2 or asker.Is_Admin)     
       return self.phone_number 
     elsif (self.privacy.phonepriv == 1 and inCollaborators(asker))  
       return self.phone_number

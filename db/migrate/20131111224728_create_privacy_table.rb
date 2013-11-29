@@ -7,7 +7,7 @@ class CreatePrivacyTable < ActiveRecord::Migration
           t.integer :phonepriv, :default => 0
           t.integer :expertisepriv, :default => 0
           t.integer :regionpriv, :default => 0
-          t.integer :pseudonympriv, :default => 0
+          t.integer :pseudonympriv, :default => 2
           end
   end
 

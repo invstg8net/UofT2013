@@ -4,11 +4,11 @@
   </header>
   <table class="table">
     <thead>
-    <th>id</th>
+    <th>Pseudonym</th>
     <th>Name</th>
     <th>Email</th>
-    <th>Mobile Phone</th>
-    <th>Join Date</th>
+    <th>Phone</th>
+    <th>Region</th>
     <th>Expertise</th>
     <th>Send a Message</th>
     <th>Request Collab</th>
@@ -16,11 +16,11 @@
     <!-- Username Point -->
     <% @researchers.each do |r| %>
       <tr class="approved" id="q1">
-        <td><%= r.id %></td>
+        <td><%= r.getPseudonym(current_user) %></td>
         <td><%= r.getName(current_user) %></td>
         <td><%= r.getEmail(current_user) %></td>
         <td><%= r.getPhone(current_user) %></td>
-        <td><%= r.created_at.strftime('%c') %></td>
+        <td><%= r.getExpertise(current_user) %></td>
         <td><%= r.expertise %></td>
         <% if r.id != current_user.id %>
             <td> <%= link_to "Contact User", new_message_path(:target_user_id => r.id)  %></th>

@@ -22,7 +22,14 @@
         <td><%= @researcher.email %></td>
         <td><%= @researcher.phone_number %></td>
         <td><%= @researcher.expertise %></td>
-        <td><%= @researcher.status %></td>
+        <% if @researcher.status == 1 %>
+          <td><%= "Active" %></td>
+        <% elsif @researcher.status == 0 %>
+          <td><%= "Deactivated" %></td>
+        <% elsif @researcher.status == -1 %>
+          <td><%= "Banned" %></td>
+        <% end %>
+        
       </tr>
     
   </table>

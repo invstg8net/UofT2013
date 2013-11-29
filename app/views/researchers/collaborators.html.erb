@@ -4,22 +4,22 @@
   </header>
   <table class="table">
     <thead>
-    <th>id</th>
+    <th>Pseudonym</th>
     <th>Name</th>
     <th>Email</th>
-    <th>Mobile Phone</th>
-    <th>Join Date</th>
+    <th>Phone</th>
+    <th>Region</th>
     <th>Expertise</th>
     <th>Send a Message</th>
     </thead>
     <!-- Username Point -->
     <% @collaborators.each do |c| %>
       <tr class="approved" id="q1">
-        <td><%= c.getResearcher.id %></td>
+        <td><%= c.getResearcher.getPseudonym(current_user) %></td>
         <td><%= c.getResearcher.getName(current_user) %></td>
         <td><%= c.getResearcher.getEmail(current_user) %></td>
         <td><%= c.getResearcher.getPhone(current_user) %></td>
-        <td><%= c.getResearcher.created_at.strftime('%c') %></td>
+        <td><%= c.getResearcher.getRegion(current_user) %></td>
         <td><%= c.getResearcher.expertise %></td>
         <% if c.getResearcher.id != current_user.id %>
             <td><%= link_to "Contact User", root_url + "messages/new"  %></td>

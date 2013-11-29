@@ -5,13 +5,15 @@
   <table class="table">
     <thead>
     <th>id</th>
+    <th>Pseudonym</th>
     <th>Name</th>
     <th>Email</th>
-    <th>Mobile Phone</th>
+    <th>Phone</th>
+    <th>Region</th>
+    <th>Expertise</th>
     <th>Join Date</th>
     <th>Approv.</th>
     <th>Admin Privileges</th>
-    <th>Expertise</th>
     <th>Send a Message</th>
     <th>Request Collab</th>
     <th></th>
@@ -20,9 +22,12 @@
     <% @researchers.each do |r| %>
       <tr class="approved" id="q1">
         <td><%= r.id %></td>
+        <td><%= r.pseudonym %></td>
         <td><%= r.name %></td>
         <td><%= r.email %></td>
         <td><%= r.phone_number %></td>
+        <td><%= r.region %></td>
+        <td><%= r.expertise %></td>
         <td><%= r.created_at.strftime('%c') %></td>
         <td>
           <% if r.id == 1 %>
@@ -42,7 +47,6 @@
             <%= link_to 'Activate', [:activate_admin, :admin, r] %>
           <% end %>
         </td>
-        <td><%= r.expertise %></td>
         <td> <%= link_to "Contact User", new_message_path(:target_user_id => r.id)  %></td>
         <% if current_user.inCollaborators(r) %>
             <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(r, :target_user_id => r.id, :location => "browse") %></td>

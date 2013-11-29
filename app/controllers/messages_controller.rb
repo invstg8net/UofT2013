@@ -3,6 +3,10 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @mymessages = current_user.messages.all
+    @mymessages.each do |m|
+      Researcher.where("id = ?", m.sender).first.setPrivacy
+      Researcher.where("id = ?", m.researcher_id).first.setPrivacy
+    end
 
     respond_to do |format|
       format.html # index.html.erb

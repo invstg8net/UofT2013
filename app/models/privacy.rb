@@ -8,24 +8,9 @@ class Privacy < ActiveRecord::Base
 	#1 = semi-private (friends?)
 	#2 = public
 
-	validates_presence_of :namepriv
-	validates_presence_of :emailpriv
-	validates_presence_of :phonepriv
-	validates_presence_of :expertisepriv
+	# validates_presence_of :namepriv
+	# validates_presence_of :emailpriv
+	# validates_presence_of :phonepriv
+	# validates_presence_of :expertisepriv
 
-	def updateSettingsName(val)
-		self.namepriv = val
-	end
-
-	def updateSettingsEmail(val)
-		self.emailpriv = val
-	end
-
-	def updateSettingsPhone(val)
-		self.phonepriv = val
-	end
-
-	def updateSettingsExpertise(val)
-		self.expertisepriv = val
-	end
 end
