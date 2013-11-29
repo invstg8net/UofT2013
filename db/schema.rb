@@ -69,14 +69,14 @@ ActiveRecord::Schema.define(:version => 20131123214806) do
   end
 
   create_table "researchers", :force => true do |t|
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "phone_number"
     t.string   "name",                :default => "---"
-    t.string   "pseudonym",           :default => "Anonymous"
+    t.string   "pseudonym"
     t.string   "region",              :default => "---"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",       :default => 0

@@ -66,7 +66,7 @@ class ResearchersController < ApplicationController
   end
 
   def doSearch
-    @results = Researchers.seach(params[:search])
+    @results = Researcher.search(params[:search])
     redirect_to [:researchers, :search_results]
   end
 

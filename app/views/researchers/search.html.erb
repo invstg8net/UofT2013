@@ -10,13 +10,14 @@
   <header>
   	<h2>Search</h2>
   </header>
-  <% form_tag researchers_DoSearch, :method => 'get' do %>
+  <%= form_tag doSearch_researchers_path, :method => 'get' do%>
   	<p>
-  		<%= text_field_tag :search, params[:search], :placeholder => "Enter your search" %>
+  	  <%= text_field_tag :search, params[:search], :placeholder => "Enter your search" %>
       <%= select_tag(:search_type, (options_for_select([['Name', 0], ['Expertise', 1], ['Pseudonym', 2], ['Region', 3]]))) %>
-  		<%= submit_tag "Search", :name => nil %>
+  	  <%= submit_tag "Search", :name => nil %>
   	</p>
   <% end %>
+
 </div>
 
 <div id ="user_nav" align = "left" style = "background-color: yellow; margin: 10px 600px 10px 600px;">

@@ -17,6 +17,8 @@ InvestigateNet::Application.routes.draw do
 
   get "researchers/collaborators"
 
+  # get "researchers/doSearch"
+
   get "admin/researchers/search"
 
   get "researchers/questions" 
@@ -53,6 +55,9 @@ InvestigateNet::Application.routes.draw do
     member do
       get :collaborate
       get :uncollaborate
+    end
+    collection do
+      get 'doSearch'
     end
   end
   
