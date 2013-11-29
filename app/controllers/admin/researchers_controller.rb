@@ -4,6 +4,13 @@ class Admin::ResearchersController < Admin::BaseController
 
   end
 
+  def search_results
+    @results = Researcher.search(params[:search], params[:search_type])
+    @results.each do |r|
+      r.setPrivacy()
+    end
+  end
+
   def index
     @researchers = Researcher.order('id ASC').all
     @experts = Expert.all

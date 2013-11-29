@@ -21,6 +21,8 @@ InvestigateNet::Application.routes.draw do
 
   get "admin/researchers/search"
 
+  get "admin/researchers/search_results"
+
   get "researchers/questions" 
   get "questions" => "questions#new", :as => "new_question"
   

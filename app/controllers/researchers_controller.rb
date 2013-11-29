@@ -66,8 +66,11 @@ class ResearchersController < ApplicationController
   end
 
   def doSearch
-    #@results = Researcher.search(params[:search])
-    redirect_to researchers_search_results_path(:search => params[:search], :search_type => params[:search_type])
+    if (current_user.Is_Admin)
+      redirect_to admin_researchers_search_results_path(:search => params[:search], :search_type => params[:search_type])
+    else
+      redirect_to researchers_search_results_path(:search => params[:search], :search_type => params[:search_type])
+    end
   end
 
   def search_results
