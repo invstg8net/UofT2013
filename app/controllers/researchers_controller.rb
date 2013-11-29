@@ -66,11 +66,12 @@ class ResearchersController < ApplicationController
   end
 
   def doSearch
-    @results = Researcher.search(params[:search])
-    redirect_to [:researchers, :search_results]
+    #@results = Researcher.search(params[:search])
+    redirect_to researchers_search_results_path(:search => params[:search], :search_type => params[:search_type])
   end
 
   def search_results
+    @results = Researcher.search(params[:search], params[:search_type])
     @results.each do |r|
       r.setPrivacy()
     end

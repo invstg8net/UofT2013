@@ -1,4 +1,42 @@
-<header>
-  <h1></h1>
-</header>
-
+<div class="container">
+  <header>
+    <h2>Users</h2>
+  </header>
+  <table class="table">
+    <thead>
+    <th>Pseudonym</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Region</th>
+    <th>Expertise</th>
+    <th>Send a Message</th>
+    <th>Request Collab</th>
+    </thead>
+    <!-- Username Point -->
+    <% @results.each do |r| %>
+      <tr class="approved" id="q1">
+        <td><%= r.getPseudonym(current_user) %></td>
+        <td><%= r.getName(current_user) %></td>
+        <td><%= r.getEmail(current_user) %></td>
+        <td><%= r.getPhone(current_user) %></td>
+        <td><%= r.getRegion(current_user) %></td>
+        <td><%= r.expertise %></td>
+        <% if r.id != current_user.id %>
+            <td> <%= link_to "Contact User", new_message_path(:target_user_id => r.id)  %></th>
+        <% else %>
+            <td>---</td>
+        <% end %>
+        <% if current_user.inCollaborators(r) %>
+            <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(r, :target_user_id => r.id, :location => "browse") %></td>
+        <% else %>
+            <% if r.id != current_user.id %>
+                <td><%= link_to 'Collaborate', collaborate_researcher_path(r, :target_user_id => r.id) %></td>
+            <% else %>
+                <td>---</td>
+            <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div><!--container-->

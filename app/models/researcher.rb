@@ -113,9 +113,17 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
     end
   end
 
-  def self.search(search)
-    if search
-      self.find(:all, :conditions => ['name LIKE ?', "%{#{search}%"])
+  def self.search(search, search_type)
+    if (search)
+      if (search_type == 'name')
+        self.find(:all, :conditions => ['name LIKE ?', "#{search}"])
+      elsif (search_type == 'expertise')
+        self.find(:all, :conditions => ['expertise LIKE ?', "#{search}"])
+      elsif (search_type == 'pseudonym')
+        self.find(:all, :conditions => ['pseudonym LIKE ?', "#{search}"])
+      elsif (search_type == 'region')
+        self.find(:all, :conditions => ['region LIKE ?', "#{search}"])
+      end
     else
       self.find(:all)
     end

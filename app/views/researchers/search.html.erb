@@ -13,7 +13,7 @@
   <%= form_tag doSearch_researchers_path, :method => 'get' do%>
   	<p>
   	  <%= text_field_tag :search, params[:search], :placeholder => "Enter your search" %>
-      <%= select_tag(:search_type, (options_for_select([['Name', 0], ['Expertise', 1], ['Pseudonym', 2], ['Region', 3]]))) %>
+      <%= select_tag(:search_type, (options_for_select([['Name', 'name'], ['Expertise', 'expertise'], ['Pseudonym', 'pseudonym'], ['Region', 'region']]))) %>
   	  <%= submit_tag "Search", :name => nil %>
   	</p>
   <% end %>
