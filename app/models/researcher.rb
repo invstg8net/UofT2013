@@ -76,6 +76,14 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
       nil
     end
   end
+
+  def self.search(search)
+    if search
+      self.find(:all, :conditions => ['name LIKE ?', "%{#{search}%"])
+    else
+      self.find(:all)
+    end
+  end
   
   def encrypt_password
     if password.present?

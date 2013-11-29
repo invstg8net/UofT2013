@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20131123214806) do
     t.integer "emailpriv",     :default => 0
     t.integer "phonepriv",     :default => 0
     t.integer "expertisepriv", :default => 0
+    t.integer "regionpriv",    :default => 0
+    t.integer "pseudonympriv", :default => 0
   end
 
   create_table "questions", :force => true do |t|
@@ -62,16 +64,19 @@ ActiveRecord::Schema.define(:version => 20131123214806) do
     t.boolean  "escalated",     :default => false
     t.datetime "needed_by"
     t.string   "appended_info"
+    t.integer  "researcher_id"
   end
 
   create_table "researchers", :force => true do |t|
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "phone_number"
-    t.string   "name"
+    t.string   "name",                :default => "---"
+    t.string   "pseudonym",           :default => "Anonymous"
+    t.string   "region",              :default => "---"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",       :default => 0
     t.datetime "current_sign_in_at"

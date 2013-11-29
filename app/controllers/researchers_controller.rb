@@ -62,11 +62,18 @@ class ResearchersController < ApplicationController
 
 # Add search page
   def search
+    
+  end
 
+  def doSearch
+    @results = Researchers.seach(params[:search])
+    redirect_to [:researchers, :search_results]
   end
 
   def search_results
-
+    @results.each do |r|
+      r.setPrivacy()
+    end
   end
 
   def collaborators
