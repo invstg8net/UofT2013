@@ -62,7 +62,7 @@ class ResearchersController < ApplicationController
 
 # Add search page
   def search
-    
+
   end
 
   def doSearch
@@ -98,7 +98,7 @@ class ResearchersController < ApplicationController
     @newcollab = Collaborator.new :researcher_id => current_user.id, :collabid => params[:target_user_id]
     @newcollab.save
     #send a message to this user
-    @newmessage = Message.new :sender => current_user.id, :researcher_id => params[:target_user_id], :message => "User #{current_user.id} has sent a collaboration request."
+    @newmessage = Message.new :sender => current_user.id, :researcher_id => params[:target_user_id], :message => "User #{current_user.pseudonym} has sent a collaboration request. ", :collab_request => true
     @newmessage.save
     if current_user.Is_Admin
       redirect_to [:admin, :researchers]

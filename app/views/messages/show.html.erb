@@ -12,7 +12,10 @@
 <br />
 <p>
   <b>Message:</b><br />
-  <%= @message.message %>
+  <%= @message.message %><br />
+  <% if @message.collab_request %>
+  	<%= link_to 'Collaborate?', collaborate_researcher_path(@message.sender, :target_user_id => @message.sender) %>
+  <% end %>
 </p>
 
 

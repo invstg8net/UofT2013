@@ -4,6 +4,7 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :researcher_id
       t.integer :sender
       t.string :message
+      t.boolean :collab_request, :default => false
 
       t.timestamps
     end

@@ -37,11 +37,23 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
 
   def getPseudonym(asker)
     if (self.privacy.pseudonympriv == 2 or asker.Is_Admin)     #public
-      return self.pseudonym
+      if self.pseudonym != nil
+        return self.pseudonym
+      else
+        return "Anonymous"
+      end
     elsif (self.privacy.pseudonympriv == 1 and inCollaborators(asker))  #available to collaborators
-      return self.pseudonym
+      if self.pseudonym != nil
+        return self.pseudonym
+      else
+        return "Anonymous"
+      end
     elsif (asker == self)   #displaying for self
-      return self.pseudonym
+      if self.pseudonym != nil
+        return self.pseudonym
+      else
+        return "Anonymous"
+      end
     else
       return "Anonymous"
     end

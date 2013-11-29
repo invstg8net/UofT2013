@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(:version => 20131123214806) do
     t.integer  "researcher_id"
     t.integer  "sender"
     t.string   "message"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.boolean  "collab_request", :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "privacies", :force => true do |t|
@@ -51,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20131123214806) do
     t.integer "phonepriv",     :default => 0
     t.integer "expertisepriv", :default => 0
     t.integer "regionpriv",    :default => 0
-    t.integer "pseudonympriv", :default => 0
+    t.integer "pseudonympriv", :default => 2
   end
 
   create_table "questions", :force => true do |t|
