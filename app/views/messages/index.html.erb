@@ -14,14 +14,14 @@
   <tr>
     <td><%= Researcher.where("id = ?", message.sender).first.getPseudonym(current_user) %></td>
     <td><%= message.message %></td>
-    <td><%= link_to 'Show', message %></td>
+    <td><%= link_to 'Show', message, {:style=>'color:#ffffff'} %></td>
     <% if message.sender != current_user.id %>    
-        <td><%= link_to 'Reply', reply_message_path(message, :target_user_id => message.sender) %></td>
+        <td><%= link_to 'Reply', reply_message_path(message, :target_user_id => message.sender), {:style=>'color:#ffffff'} %></td>
     <% else %>
         <td><%= link_to 'Edit', edit_message_path(message, :target_user_id => message.researcher_id) %></td> 
     <% end %>
     
-    <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete, :style=>'color:#ffffff' %></td>
   </tr>
 <% end %>
 </table>

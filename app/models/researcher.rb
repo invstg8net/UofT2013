@@ -75,7 +75,7 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
     if (self.privacy.emailpriv == 2 or asker.Is_Admin)     
       return self.email
     elsif (self.privacy.emailpriv == 1 and inCollaborators(asker))  
-      return self.name
+      return self.email
     elsif (asker == self)
       return self.email
     else

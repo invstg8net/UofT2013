@@ -8,7 +8,7 @@
 
 </br>
 
-<%= link_to "Create New Question", new_question_path %>
+<%= link_to "Create New Question", new_question_path, {:style=>'color:#ffffff'} %>
 <h3 align= "center">My Questions</h3>
 <div class="container">
   <table class="table">
@@ -31,8 +31,8 @@
         <td><%= q.phone_number %></td>
         <td><%= q.created_at.strftime('%c') %></td>
         <td><%= q.needed_by.strftime('%c') %></td>
-        <td><%= q.answers.where(:answered => true).where('body IS NOT NULL').count %>   <%= link_to 'View Answers', question_path(q.id) %> </td>
-        <td><%= link_to 'Edit Question', edit_question_path(q) %> </td>
+        <td><%= q.answers.where(:answered => true).where('body IS NOT NULL').count %>   <%= link_to 'View Answers', question_path(q.id), {:style=>'color:#ffffff'} %> </td>
+        <td><%= link_to 'Edit Question', edit_question_path(q), {:style=>'color:#ffffff'} %> </td>
         <td> </td>
        
       </tr>
@@ -68,8 +68,8 @@
         <!--<td><%= p.answers.count %></td>
         
         <td><%= p.answers.where(:answered => true).where('body IS NULL').count %></td> -->
-        <td><%= link_to 'View Answers', question_path(p.id) %> </td>
-        <td><%= link_to 'Answer Question', edit_answer_path(Answer.find(:all, :conditions => ["researcher_id = ? and question_id = ?", current_user.id, p.id]).first.id) %> </td>
+        <td><%= link_to 'View Answers', question_path(p.id), {:style=>'color:#ffffff'} %> </td>
+        <td><%= link_to 'Answer Question', edit_answer_path(Answer.find(:all, :conditions => ["researcher_id = ? and question_id = ?", current_user.id, p.id]).first.id), {:style=>'color:#ffffff'} %> </td>
       </tr>
     <% end %>
   </table>

@@ -23,12 +23,12 @@
         <td><%= c.getResearcher.getRegion(current_user) %></td>
         <td><%= c.getResearcher.expertise %></td>
         <% if c.getResearcher.id != current_user.id %>
-            <td><%= link_to "Contact User", root_url + "messages/new"  %></td>
+            <td><%= link_to "Contact User", root_url + "messages/new", {:style=>'color:#ffffff'}  %></td>
         <% else %>
             <td>---</td>
         <% end %>
         <% if current_user.inCollaborators(c.getResearcher) %>
-            <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(c.getResearcher, :target_user_id => c.getResearcher.id, :location => "collaborators") %></td>
+            <td><%= link_to 'Uncollaborate', uncollaborate_researcher_path(c.getResearcher, :target_user_id => c.getResearcher.id, :location => "collaborators"), {:style=>'color:#ffffff'} %></td>
         <% end %>
       </tr>
     <% end %>

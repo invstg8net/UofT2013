@@ -25,8 +25,8 @@
 <% if current_user %>
   <%= link_to "All", root_url + "researchers/browse", {:style=>'color:#ffffff'} %>
 <% else %>
-  <%= link_to "Sign up", sign_up_path %> ||
-  <%= link_to "Log in", log_in_path %>
+  <%= link_to "Sign up", sign_up_path, {:style=>'color:#ffffff'} %> ||
+  <%= link_to "Log in", log_in_path, {:style=>'color:#ffffff'} %>
 <% end %>
   </h4>
 </div>

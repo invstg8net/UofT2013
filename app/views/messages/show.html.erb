@@ -16,10 +16,10 @@
   <b>Message:</b><br />
   <%= @message.message %><br />
   <% if @message.collab_request %>
-  	<%= link_to 'Collaborate?', collaborate_researcher_path(@message.sender, :target_user_id => @message.sender) %>
+  	<%= link_to 'Collaborate?', collaborate_researcher_path(@message.sender, :target_user_id => @message.sender), {:style=>'color:#ffffff'} %>
   <% end %>
 </p>
 
 
-<%= link_to 'Reply', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<%= link_to 'Reply', edit_message_path(@message), {:style=>'color:#ffffff'} %> |
+<%= link_to 'Back', messages_path, {:style=>'color:#ffffff'} %>
