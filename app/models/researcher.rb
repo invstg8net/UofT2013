@@ -137,7 +137,7 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
   end
 
   def self.select_researchers_for_question(question, current_user)
-return Researcher.where(:status => 1).where(:expertise => question.topic).where(:expertise != current_user).order('RANDOM()').limit(3).all #TODO - Something smarter than this please
+return Researcher.where(:status => 1).where(:expertise => question.topic).order('RANDOM()').limit(3).all #TODO - Something smarter than this please
   end
 
     # This will be used by an algorithm to constantly change the rating of a researcher

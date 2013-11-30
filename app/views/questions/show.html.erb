@@ -1,3 +1,5 @@
+ <body style="background-color: #000000" align="center">
+
 <p id="notice"><%= notice %></p>
 
 <div class="container">
@@ -10,7 +12,7 @@
   <% end%>
   <% if b %>
     
-    <table class="table">
+    <table class="table" style = "color:#ffffff">
       <thead>
       <th>State</th>
       <th>Answer</th>
@@ -21,7 +23,7 @@
       </thead>
      <% @question.answers.each do |a| %>
        <% if a.body %>
-      <tr class="answer">
+      <tr class="answer" style = "background-color:#000000">
         <td><%= a.answered ? (a.body.nil? ? 'Unsucessful' : 'Sent') : 'Waiting'  %></td>
         <td><%= a.body %></td>
         <td><%= a.created_at.strftime('%c') %></td>

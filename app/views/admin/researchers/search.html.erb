@@ -1,3 +1,4 @@
+<body style="background-color: #000000" align="center">
 <header>
   <h1></h1>
 
@@ -19,10 +20,10 @@
     </p>
   <% end %>
 
-<div id ="user_nav" align = "center" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
+<div id ="user_nav" align = "center" style = "background-color: black; margin: 10px 600px 10px 600px;">
 <h4>
 <% if current_user %>
-  <%= link_to "All (Admin)", root_url + "admin/researchers"  %>
+  <%= link_to "All (Admin)", root_url + "admin/researchers", {:style=>'color:#ffffff'}  %>
 <% else %>
   <%= link_to "Sign up", sign_up_path %> ||
   <%= link_to "Log in", log_in_path %>
@@ -34,10 +35,10 @@
 <p></p>
 </div>
 
-<div id ="user_nav" align = "left" style = "background-color: yellow; margin: 10px 600px 10px 600px;">
+<div id ="user_nav" align = "center" style = "background-color: black; margin: 10px 600px 10px 600px;">
 <h4>
 <% if current_user %>
-  <%= link_to "My Collaborators", root_url + "researchers/collaborators"  %>
+  <%= link_to "My Collaborators", root_url + "researchers/collaborators", {:style=>'color:#ffffff'}  %>
 <% else %>
   <%= link_to "Sign up", sign_up_path %> ||
   <%= link_to "Log in", log_in_path %>
