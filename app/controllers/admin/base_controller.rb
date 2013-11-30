@@ -7,6 +7,7 @@ class Admin::BaseController < ApplicationController
   def execute_this_for_every_action
     @current_user ||= Researcher.find(session[:user_id]) if session[:user_id]
     if @current_user
+      current_user.setPrivacy()
       email = @current_user.email
       user = Researcher.where("email = ?", email)
       is_admin = user.first.Is_Admin

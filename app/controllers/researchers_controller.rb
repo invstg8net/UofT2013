@@ -50,6 +50,7 @@ class ResearchersController < ApplicationController
     if current_user
       email = current_user.email
       @researcher = Researcher.where("email = ?", email).first
+      @researcher.setPrivacy()
       @privacy = @researcher.privacy
       respond_to do |format|
         format.html # show.html.erb
