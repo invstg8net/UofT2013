@@ -1,0 +1,111 @@
+
+<!--%= flash_message %>
+<!--div class="edit">
+  <div class="sixteen columns">
+    <%= form_for @question do |f| %>
+      <% if !current_user%>
+        <h4>Email</h4>
+        <%= f.text_field :email %>
+        <h4>Phone Number</h4>
+        <%= f.text_field :phone_number %>
+      <% end %>
+      <h4>Subject</h4>
+        <%= collection_select :expertise, :topic, Expert.all, :topic, :topic %>
+      </br>
+      
+      <section>
+        <h4>Urgency</h4>
+        <p>
+          How soon do you need this information?
+        </p>
+        <%= f.select(:needed_by,
+          options_for_select([
+              ['Extreme < 5 hours', 6.hours.from_now],
+              ['High < 24 hours', 24.hours.from_now],
+              ['Moderate < 3 days', 3.days.from_now],
+              ['Low < 1 week', 1.week.from_now],
+              ['Whenever', nil]
+            ])) %>
+      </section>
+
+      <section>
+        <hr class=""/>
+        <h4>Region <span class="import-stuff">*</span></h4>
+                                  Which region is this request about?
+        <div>?
+          <label>1. Africa </label>
+          <input type="radio"
+                 name="region"
+                 value"1"/>
+        </div>
+        <div>
+          <label>2. Asia </label>
+          <input type="radio"
+                 name="region"
+                 value"2"/>
+        </div>
+        <div>
+          <label>South America</label>
+          <input type="radio"
+                 name="region"
+                 value"3"/>
+        </div>
+        <div>
+          <label>Australasia</label>
+          <input type="radio"
+                 name="region"
+                 value"4"/>
+        </div>
+
+        <div>
+          <label>Europe</label>
+          <input type="radio"
+                 name="region"
+                 value"5"/>
+        </div>
+        <div>
+          <label>Arctic</label>
+          <input type="radio"
+                 name="region"
+                 value"6"/>
+        </div>
+        <div>
+          <label>Antartica</label>
+          <input type="radio"
+                 name="region"
+                 value"7"/>
+        </div>
+
+      </section>
+
+      <section>
+        <h4>Enter your request <span class="import-stuff">*</span></h4>
+        <%= f.text_area :body %>
+      </section>
+      <%= f.submit %>
+    <% end %>
+
+  </div>
+
+
+</div-->
+
+<div class="container">
+  <div class="sixteen columns">
+    <h1>Investig8.net Question</h1>
+    <%= form_tag @question, :method => :put %>
+
+      <section>
+        <div>
+          <label>Question<span class="import-stuff">*</span></label>
+          <%= text_area_tag :body %>
+        </div>
+      </section><!-- -->
+      <hr class=""/>
+      <%= submit_tag %>
+
+    </div>
+
+
+  </div><!-- container -->
+

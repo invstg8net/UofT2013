@@ -1,5 +1,5 @@
 <html>
-<body link="#00FF00" vlink="#00FF00" alink="#00FF00"> 
+<body link="#00FF00" vlink="#00FF00" alink="#00FF00"style="background-color: #000000" TEXT="#ffffff"> 
 <h1>Questions</h1>
 <%= flash_message %>
 </br>
@@ -14,10 +14,10 @@
     <th>Date</th>
     <th>Needed By</th>
     <th>Answers</th>
+    <th>Edit</th>
     <!--<th>Successful Answers</th>
     <th>Unsuccessful Replies</th> -->
-    <th></th>
-    <th></th>
+
     </thead>
     <% @questions.each do |q| %>
       <tr class="question">
@@ -26,11 +26,9 @@
         <td><%= q.phone_number %></td>
         <td><%= q.created_at.strftime('%c') %></td>
         <td><%= q.needed_by.strftime('%c') %></td>
-        <td><%= q.answers.where(:answered => true).where('body IS NOT NULL').count %></td>
-        <!--<td><%= q.answers.count %></td>
-        
-        <td><%= q.answers.where(:answered => true).where('body IS NULL').count %></td> -->
-        <td><%= link_to 'View Answers', question_path(q.id) %> </td>
+        <td><%= q.answers.where(:answered => true).where('body IS NOT NULL').count %>   <%= link_to 'View Answers', question_path(q.id) %> </td>
+        <td><%= link_to 'Edit Question', edit_question_path(q) %> </td>
+        <td> </td>
        
       </tr>
     <% end %>

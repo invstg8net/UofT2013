@@ -143,7 +143,7 @@ end
 	    @question.updated_at = new_message.date_created
 	    @question.needed_by = "2013-03-30 05:10:10"
 	    @question.save
-            researchers = Researcher.select_researchers_for_question(@question)
+        researchers = Researcher.select_researchers_for_question(@question) #THIS WILL NEED TO CHANGE AS THE METHOD SIGNATURE HAS CHANGED FOR THE FUNCTION.
             researchers.each do |r|
               @question.send_to_researcher(r)
             end

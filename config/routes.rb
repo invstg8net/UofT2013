@@ -25,6 +25,7 @@ InvestigateNet::Application.routes.draw do
 
   get "researchers/questions" 
   get "questions" => "questions#new", :as => "new_question"
+  # get "questions" => "questions#edit", :as => "edit_question"
   
   post "user_session/new"
   get "log_out" => "sessions#destroy", :as => "log_out"
@@ -33,15 +34,20 @@ InvestigateNet::Application.routes.draw do
   
   devise_for :admins
 
-  resources :questions, :only => [:new, :create, :show]
+  resources :questions, :only => [:new, :create, :show, :edit, :update] #do
+    #member do
+      #get :edit
+      #put :edit
+    #end
+  #end
   resources :answers, :only => [:show, :edit, :update] do
     get :no_answer, :on => :member
   end
 
   namespace :admin do
-    resources :questions, :only => [:index, :show]
-    resources :answers, :only => [:create]
-    resources :researchers, :only => [:index] do
+      resources :questions, :only => [:index, :show, :edit]
+      resources :answers, :only => [:create]
+      resources :researchers, :only => [:index] do
       get :activate, :on => :member
       get :deactivate, :on => :member
       get :activate_admin, :on => :member

@@ -3,6 +3,35 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @experts = Expert.new
   end
+  
+  def edit
+      if current_user
+          @question = Question.find params[:id]
+          else
+          redirect_to root_url
+      end
+  end
+
+  def update
+    if current_user
+      @question = Question.find params[:id]
+      @question.body = params[:body]
+      @question.save
+      #if @qustion.body.nil?
+        #Check to see if admin should be notified if all answers
+        # puts "ESCALATE"
+        # @answer.question.escalate_to_admin if @answer.question.should_escalate?
+      #else
+        #puts "SEND TO JORUNALIST"
+        ##Email/SMS user who submitted the question
+        #@answer.send_to_journalist
+      #end
+      render :thank_you
+    else
+       redirect_to root_url
+    end  
+  end
+
 
   def create
     q_params = params[:question] || params
@@ -17,7 +46,7 @@ class QuestionsController < ApplicationController
 #, :risk_level => q_params[:risk_level], :region => q_params[:region]
 
         #Choose X Random Researchers
-      researchers = Researcher.select_researchers_for_question(q)
+      researchers = Researcher.select_researchers_for_question(q, current_user)
 
         #Email Random Researchers & Create Questions
       researchers.each do |r|
@@ -35,7 +64,7 @@ class QuestionsController < ApplicationController
 #, :risk_level => q_params[:risk_level], :region => q_params[:region]
 
         #Choose X Random Researchers
-        researchers = Researcher.select_researchers_for_question(q)
+        researchers = Researcher.select_researchers_for_question(q, current_user)
 
         #Email Random Researchers & Create Questions
         researchers.each do |r|
