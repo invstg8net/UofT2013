@@ -9,6 +9,7 @@
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
+    <th>Twitter</th>
     <th>Region</th>
     <th>Expertise</th>
     <th>Send a Message</th>
@@ -20,6 +21,15 @@
         <td><%= c.getResearcher.getName(current_user) %></td>
         <td><%= c.getResearcher.getEmail(current_user) %></td>
         <td><%= c.getResearcher.getPhone(current_user) %></td>
+        <% if r.twitter != nil %>
+            <% if r.getTwitter(current_user) != "---" %>
+                <td><%= link_to r.twitter, "http://www.twitter.com/#{r.twitter}" %></td>
+            <% else %>
+                <td>---</td>
+            <% end %>
+        <% else %>
+            <td>---</td>
+        <% end %>
         <td><%= c.getResearcher.getRegion(current_user) %></td>
         <td><%= c.getResearcher.expertise %></td>
         <% if c.getResearcher.id != current_user.id %>

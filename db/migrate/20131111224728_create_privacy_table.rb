@@ -8,6 +8,7 @@ class CreatePrivacyTable < ActiveRecord::Migration
           t.integer :expertisepriv, :default => 0
           t.integer :regionpriv, :default => 0
           t.integer :pseudonympriv, :default => 2
+          t.integer :twitterpriv, :default => 0
           end
   end
 

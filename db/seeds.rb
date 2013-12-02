@@ -10,6 +10,7 @@ superuser.name = "superuser"
 superuser.pseudonym = "The Admin"
 superuser.password = "password"
 superuser.email = "invstg8net@gmail.com"
+superuser.twitter = "@invstg8net"
 superuser.superuser = true
 superuser.phone_number = "+12898029128"
 superuser.status = 1

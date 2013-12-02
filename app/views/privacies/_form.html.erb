@@ -12,16 +12,28 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :pseudonym %><br />
+    <%= f.select :pseudonympriv, [['Private', 0], ['Collaborators Only', 1], ['Public', 2]] %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.select :namepriv, [['Private', 0], ['Collaborators Only', 1], ['Public', 2]] %>
   </div>
-<div class="field">
+  <div class="field">
+    <%= f.label :region %><br />
+    <%= f.select :regionpriv, [['Private', 0], ['Collaborators Only', 1], ['Public', 2]] %>
+  </div>
+  <div class="field">
     <%= f.label :phone_number %><br />
     <%= f.select :phonepriv, [['Private', 0], ['Collaborators Only', 1], ['Public', 2]] %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.select :emailpriv, [['Private', 0], ['Collaborators Only', 1], ['Public', 2]] %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter %><br />
+    <%= f.select :twitterpriv, [['Private', 0], ['Collaborators Only', 1], ['Public', 2]] %>
   </div>
 
   <div class="actions">

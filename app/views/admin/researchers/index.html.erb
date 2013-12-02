@@ -10,6 +10,7 @@
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
+    <th>Twitter</th>
     <th>Region</th>
     <th>Expertise</th>
     <th>Rating</th>
@@ -28,6 +29,11 @@
         <td><%= r.name %></td>
         <td><%= r.email %></td>
         <td><%= r.phone_number %></td>
+        <% if r.twitter == nil %>
+            <td>---</td>
+        <% else %>
+            <td><%= link_to r.twitter, "http://www.twitter.com/#{r.twitter}" %></td>
+        <% end %>
         <td><%= r.region %></td>
         <td><%= r.expertise %></td>
         <td><%= r.rating %></td>

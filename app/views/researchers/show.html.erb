@@ -16,6 +16,8 @@
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
+    <th>Twitter</th>
+    <th>Region</th>
     <th>Expertise</th>
     <th>Account Status</th>
     </thead>
@@ -25,6 +27,8 @@
         <td><%= @researcher.name %></td>
         <td><%= @researcher.email %></td>
         <td><%= @researcher.phone_number %></td>
+        <td><%= @researcher.twitter %></td>
+        <td><%= @researcher.region %></td>
         <td><%= @researcher.expertise %></td>
         <% if @researcher.status == 1 %>
           <td><%= "Active" %></td>

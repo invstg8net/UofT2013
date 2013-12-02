@@ -4,7 +4,7 @@ class Researcher < ActiveRecord::Base
   has_many :collaborators
   has_many :messages
 
-attr_accessible :email, :password, :password_confirmation, :status, :name, :region, :pseudonym, :phone_number, :mobile_number, :Is_Admin, :max_questions, :textcap, :rating, :rating_n
+attr_accessible :email, :password, :password_confirmation, :status, :name, :region, :pseudonym, :twitter, :phone_number, :mobile_number, :Is_Admin, :max_questions, :textcap, :rating, :rating_n
 
 #status -1 = ban, 0 = unactivated, 1 = active
 
@@ -90,6 +90,18 @@ attr_accessible :email, :password, :password_confirmation, :status, :name, :regi
       return self.phone_number
     elsif (asker == self)
       return self.phone_number
+    else
+      return "---"
+    end
+  end
+
+  def getTwitter(asker)
+    if (self.privacy.twitterpriv == 2 or asker.Is_Admin)
+      return self.twitter
+    elsif (self.privacy.twitterpriv == 1 and inCollaborators(asker))
+      return self.twitter
+    elsif (asker == self)
+      return self.twitter
     else
       return "---"
     end

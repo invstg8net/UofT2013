@@ -11,6 +11,7 @@
     <th>Pseudonym</th>
     <th>Name</th>
     <th>Email</th>
+    <th>Twitter</th>
     <th>Phone</th>
     
     </thead>
@@ -19,6 +20,7 @@
         <td><%= r.getPseudonym(current_user) %></td>
         <td><%= r.name %></td>
         <td><%= r.email %></td>
+        <td><%= r.twitter %></td>
         <td><%= r.phone_number %></td>
         <% if @researcher.status == 1 %>
           <td><%= "Active" %></td>
