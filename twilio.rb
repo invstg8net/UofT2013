@@ -20,6 +20,7 @@ class Twilio3
   
 	def initialize
 	# put your own credentials here
+	# The code here is hardcoded to a single account, check user man for the twilio account
 		account_sid = 'AC4bba3425e18cfd02baaba6276078513d';
 		auth_token = '18dc610a87eb910067f434d05f3f7473';
 		# set up a client to talk to the Twilio REST API
