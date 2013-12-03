@@ -21,9 +21,9 @@
         <td><%= c.getResearcher.getName(current_user) %></td>
         <td><%= c.getResearcher.getEmail(current_user) %></td>
         <td><%= c.getResearcher.getPhone(current_user) %></td>
-        <% if c.twitter != nil %>
-            <% if c.getTwitter(current_user) != "---" %>
-                <td><%= link_to c.twitter, "http://www.twitter.com/#{r.twitter}" %></td>
+        <% if c.getResearcher.twitter != nil %>
+            <% if c.getResearcher.getTwitter(current_user) != "---" %>
+                <td><%= link_to c.getResearcher.twitter, "http://www.twitter.com/#{r.twitter}" %></td>
             <% else %>
                 <td>---</td>
             <% end %>

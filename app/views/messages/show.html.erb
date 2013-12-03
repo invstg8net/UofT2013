@@ -9,7 +9,7 @@
 <br />
 <p>
   <b>To:</b>
-  <%= Researcher.where("id = ?", @message.researcher_id).first.getPseudonym(current_user) %>
+  <%= Researcher.where("id = ?", @message.sender).first.getPseudonym(current_user) %>
 </p>
 <br />
 <p>
