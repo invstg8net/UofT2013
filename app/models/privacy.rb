@@ -2,8 +2,8 @@ class Privacy < ActiveRecord::Base
     
     belongs_to :researcher
 
-	attr_accessible :pseudenoympriv, :regionpriv, :twitterpriv, :namepriv, :emailpriv, :phonepriv, :expertisepriv
-
+	attr_accessible :pseudonympriv, :regionpriv, :twitterpriv, :namepriv, :emailpriv, :phonepriv, :expertisepriv
+	
 	#0 = private
 	#1 = semi-private (friends?)
 	#2 = public

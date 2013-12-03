@@ -15,9 +15,13 @@
 <p>
   <b>Message:</b><br />
   <%= @message.message %><br />
-  <% if @message.collab_request %>
-  	<%= link_to 'Collaborate?', collaborate_researcher_path(@message.sender, :target_user_id => @message.sender), {:style=>'color:#ffffff'} %>
-  <% end %>
+    <% if @message.collab_request %>
+        <% if current_user.inCollaborators(Researcher.where("id = ?", @message.sender).first) %>
+            <td>Added!</td>
+    	<% else %>
+            <%= link_to 'Collaborate?', collaborate_researcher_path(@message.sender, :target_user_id => @message.sender), {:style=>'color:#ffffff'} %>
+        <% end %>
+    <% end %>
 </p>
 
 
