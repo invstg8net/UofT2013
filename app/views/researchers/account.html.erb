@@ -1,21 +1,34 @@
+ <body style="background-color: #000000" align="center">
+
 <h1>Invstg8.net account</h1>
 </br>
-<%= link_to "Edit Info", "edit" %>
+<%= link_to "Edit Info", "edit", {:style=>'color:#ffffff'} %>
 </br>
 
 <div class="container">
   <table class="table">
     <thead>
+    <th>Pseudonym</th>
     <th>Name</th>
     <th>Email</th>
+    <th>Twitter</th>
     <th>Phone</th>
     
     </thead>
     <% @researchers.each do |r| %>
       <tr class="researcher">
+        <td><%= r.getPseudonym(current_user) %></td>
         <td><%= r.name %></td>
         <td><%= r.email %></td>
+        <td><%= r.twitter %></td>
         <td><%= r.phone_number %></td>
+        <% if @researcher.status == 1 %>
+          <td><%= "Active" %></td>
+        <% elsif @researcher.status == 0 %>
+          <td><%= "Deactivated" %></td>
+        <% elsif @researcher.status == -1 %>
+          <td><%= "Banned" %></td>
+        <% end %>
         
       </tr>
     <% end %>

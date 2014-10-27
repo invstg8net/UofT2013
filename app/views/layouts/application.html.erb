@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<font color="#ffffff" face="Helvetica, Arial, Trebuchet MS, Verdana, sans-serif" size="2">&nbsp;&nbsp;
+
 <head>
   <title>InvestigateNet</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -7,20 +9,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<font color="#ffffff" face="Helvetica, Arial, Trebuchet MS, Verdana, sans-serif" size="2">&nbsp;&nbsp;
+
 
 <div id ="user_nav" align = "right">
 <h4>
 <% if current_user %>
   Logged in as <%= current_user.email %> ||
-  <%= link_to "Log out", log_out_path %> ||
-  <%= link_to "Account Info", root_url + "researchers/edit"  %> ||
-  <%= link_to "Questions", root_url + "researchers/questions"  %>
+  <%= link_to "Log out", log_out_path, {:style=>'color:#ffffff'}%> ||
+  <%= link_to "Account Info", root_url + "researchers/edit" , {:style=>'color:#ffffff'} %> ||
+  <%= link_to "Questions", root_url + "researchers/questions"  , {:style=>'color:#ffffff'}%> ||
+  <%= link_to "Message Center (#{current_user.messages.size})", root_url + "messages" , {:style=>'color:#ffffff'} %>
   <% if (current_admin.Is_Admin || current_admin.superuser) %>
-    || <%= link_to "Admin", root_url + "admin/researchers"  %>
+    || <%= link_to "Search", root_url + "admin/researchers/search", {:style=>'color:#ffffff'} %>
+  <% else %>
+    || <%= link_to "Search", root_url + "researchers/search", {:style=>'color:#ffffff'} %>
   <% end %>
 <% else %>
-  <%= link_to "Sign up", sign_up_path %> ||
-  <%= link_to "Log in", log_in_path %>
+  <%= link_to "Sign up", sign_up_path, {:style=>'color:#ffffff'}%> ||
+  <%= link_to "Log in", log_in_path, {:style=>'color:#ffffff'}%>
 <% end %>
   </h4>
 </div>

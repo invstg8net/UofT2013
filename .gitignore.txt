@@ -1,0 +1,5 @@
+.project
+Gemfile.lock
+db/test.db
+tmp/
+log/

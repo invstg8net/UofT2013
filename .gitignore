@@ -1,0 +1,9 @@
+*~
+.project
+Gemfile.lock
+db/test.db
+tmp/
+log/
+.bundle/
+db/development.db
+db/schema.rb

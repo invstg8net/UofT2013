@@ -20,6 +20,7 @@ class Twilio3
   
 	def initialize
 	# put your own credentials here
+	# The code here is hardcoded to a single account, check user man for the twilio account
 		account_sid = 'AC4bba3425e18cfd02baaba6276078513d';
 		auth_token = '18dc610a87eb910067f434d05f3f7473';
 		# set up a client to talk to the Twilio REST API
@@ -45,6 +46,7 @@ class Twilio3
 		return @client.account.sms.messages.get("SM4c43cb130f7171b4e264b44eac950ca4");
 	end
 
+=begin
   # send an sms message with the body sendMessage, to the phone number sendTo
 	def send(sendMessage, sendTo)
 	@client.account.sms.messages.create(
@@ -53,6 +55,40 @@ class Twilio3
 	  :body => sendMessage
 	)
 	end
+=end
+
+# send an sms message with the body sendMessage, to the phone number sendTo
+# checks the length of the message to be sent, if length exceeds the user requested
+# length, send
+def send(sendMessage, sendTo)
+    #---new code--- STILL NEEDS TO BE TESTED
+    
+    #get user to send to from database (edge case: what if not in db?)
+    recepient = Researcher.find_by(phone_number: sendTo)
+    
+    message_length = sendMessage.length()
+    
+    #Each text has 145 characters
+    number_texts = message_length/145
+    
+    #Message to be sent
+    sent_message = nil
+    
+    #Checks the text capacity of the account
+    if (number_texts > recepient.textcap)
+        sent_message = "The number of texts that this message will send exceeds the number of your accounts capacity"
+    	else
+        sent_message = sendMessage
+	end
+    
+    #original method
+    @client.account.sms.messages.create(
+                                        :from => '2898029128',
+                                        :to => sendTo,
+                                        :body => sent_message
+                                        )
+    
+end
 
   # for testing purposes, print out all the messages in the twilio logs
 	def receive
@@ -108,7 +144,7 @@ class Twilio3
 	    @question.updated_at = new_message.date_created
 	    @question.needed_by = "2013-03-30 05:10:10"
 	    @question.save
-            researchers = Researcher.select_researchers_for_question(@question)
+        researchers = Researcher.select_researchers_for_question(@question) #THIS WILL NEED TO CHANGE AS THE METHOD SIGNATURE HAS CHANGED FOR THE FUNCTION.
             researchers.each do |r|
               @question.send_to_researcher(r)
             end

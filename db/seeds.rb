@@ -7,10 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 superuser = Researcher.new 
 superuser.name = "superuser"
+superuser.pseudonym = "The Admin"
 superuser.password = "password"
 superuser.email = "invstg8net@gmail.com"
+superuser.twitter = "@invstg8net"
 superuser.superuser = true
 superuser.phone_number = "+12898029128"
+superuser.status = 1
+superuser.Is_Admin = true
+superuser.expertise = "invstg8.net"
 superuser.save
 expert = Expert.new
 expert.topic = "News"

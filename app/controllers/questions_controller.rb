@@ -3,6 +3,35 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @experts = Expert.new
   end
+  
+  def edit
+      if current_user
+          @question = Question.find params[:id]
+          else
+          redirect_to root_url
+      end
+  end
+
+  def update
+    if current_user
+      @question = Question.find params[:id]
+      @question.body = params[:body]
+      @question.save
+      #if @qustion.body.nil?
+        #Check to see if admin should be notified if all answers
+        # puts "ESCALATE"
+        # @answer.question.escalate_to_admin if @answer.question.should_escalate?
+      #else
+        #puts "SEND TO JORUNALIST"
+        ##Email/SMS user who submitted the question
+        #@answer.send_to_journalist
+      #end
+      render :thank_you
+    else
+       redirect_to root_url
+    end  
+  end
+
 
   def create
     q_params = params[:question] || params
@@ -12,11 +41,12 @@ class QuestionsController < ApplicationController
       q = Question.new :body => q_params[:body], :phone_number => Researcher.where("email = ?", current_user.email).first.phone_number, :email => current_user.email, :needed_by => q_params[:needed_by]
       q.needed_by ||= Time.now + 5.days
       q.topic = (params[:expertise])[:topic]
+      #q.researcher_id
       q.save
 #, :risk_level => q_params[:risk_level], :region => q_params[:region]
 
         #Choose X Random Researchers
-      researchers = Researcher.select_researchers_for_question(q)
+      researchers = Researcher.select_researchers_for_question(q, current_user)
 
         #Email Random Researchers & Create Questions
       researchers.each do |r|
@@ -26,7 +56,7 @@ class QuestionsController < ApplicationController
     else
       q = Question.new :body => q_params[:body], :phone_number => q_params[:phone_number], :email => q_params[:email], :needed_by => q_params[:needed_by]
       @researcher = Researcher.new :phone_number => q_params[:phone_number], :email => q_params[:email], :password => q_params[:phone_number]
-      @researcher.activated = false
+      @researcher.status = 0
       if @researcher.save
         q.needed_by ||= Time.now + 5.days
         q.topic = (params[:expertise])[:topic]
@@ -34,7 +64,7 @@ class QuestionsController < ApplicationController
 #, :risk_level => q_params[:risk_level], :region => q_params[:region]
 
         #Choose X Random Researchers
-        researchers = Researcher.select_researchers_for_question(q)
+        researchers = Researcher.select_researchers_for_question(q, current_user)
 
         #Email Random Researchers & Create Questions
         researchers.each do |r|

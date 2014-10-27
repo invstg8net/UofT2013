@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401062218) do
+ActiveRecord::Schema.define(:version => 20131123214806) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -22,10 +22,38 @@ ActiveRecord::Schema.define(:version => 20130401062218) do
     t.datetime "updated_at",                       :null => false
   end
 
+  create_table "collaborators", :force => true do |t|
+    t.integer  "researcher_id"
+    t.integer  "collabid"
+    t.boolean  "confirmed",     :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
   create_table "experts", :force => true do |t|
     t.string  "topic",            :limit => 32,                   :null => false
     t.integer "researcher_count",               :default => 1
     t.boolean "active",                         :default => true
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "researcher_id"
+    t.integer  "sender"
+    t.string   "message"
+    t.boolean  "collab_request", :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "privacies", :force => true do |t|
+    t.integer "researcher_id"
+    t.integer "namepriv",      :default => 0
+    t.integer "emailpriv",     :default => 0
+    t.integer "phonepriv",     :default => 0
+    t.integer "expertisepriv", :default => 0
+    t.integer "regionpriv",    :default => 0
+    t.integer "pseudonympriv", :default => 2
+    t.integer "twitterpriv",   :default => 0
   end
 
   create_table "questions", :force => true do |t|
@@ -33,10 +61,12 @@ ActiveRecord::Schema.define(:version => 20130401062218) do
     t.string   "topic"
     t.string   "phone_number"
     t.text     "body"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.boolean  "escalated",    :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at"
+    t.boolean  "escalated",     :default => false
     t.datetime "needed_by"
+    t.string   "appended_info"
+    t.integer  "researcher_id"
   end
 
   create_table "researchers", :force => true do |t|
@@ -46,7 +76,10 @@ ActiveRecord::Schema.define(:version => 20130401062218) do
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "phone_number"
-    t.string   "name"
+    t.string   "name",                :default => "---"
+    t.string   "pseudonym"
+    t.string   "region",              :default => "---"
+    t.string   "twitter"
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",       :default => 0
     t.datetime "current_sign_in_at"
@@ -55,7 +88,11 @@ ActiveRecord::Schema.define(:version => 20130401062218) do
     t.string   "last_sign_in_ip"
     t.boolean  "superuser",           :default => false
     t.boolean  "Is_Admin",            :default => false
-    t.boolean  "activated",           :default => false
+    t.integer  "max_questions",       :default => 3
+    t.integer  "textcap",             :default => 5
+    t.integer  "rating",              :default => 0
+    t.integer  "rating_n",            :default => 0
+    t.integer  "status",              :default => 0
     t.string   "expertise"
     t.string   "pref_contact"
   end

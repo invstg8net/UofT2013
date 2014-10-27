@@ -1,0 +1,29 @@
+ <body style="background-color: #000000" align="center">
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sender:</b>
+  <%= Researcher.where("id = ?", @message.sender).first.getPseudonym(current_user) %>
+</p>
+<br />
+<p>
+  <b>To:</b>
+  <%= Researcher.where("id = ?", @message.sender).first.getPseudonym(current_user) %>
+</p>
+<br />
+<p>
+  <b>Message:</b><br />
+  <%= @message.message %><br />
+    <% if @message.collab_request %>
+        <% if current_user.inCollaborators(Researcher.where("id = ?", @message.sender).first) %>
+            <td>Added!</td>
+    	<% else %>
+            <%= link_to 'Collaborate?', collaborate_researcher_path(@message.sender, :target_user_id => @message.sender), {:style=>'color:#ffffff'} %>
+        <% end %>
+    <% end %>
+</p>
+
+
+<%= link_to 'Reply', edit_message_path(@message), {:style=>'color:#ffffff'} %> |
+<%= link_to 'Back', messages_path, {:style=>'color:#ffffff'} %>

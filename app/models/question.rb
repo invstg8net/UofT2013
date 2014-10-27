@@ -1,6 +1,5 @@
 class Question < ActiveRecord::Base
   has_many :answers
-
   #attr_accessible :  :email,:topic, :phone_number, :body, :created_at, :updated_at, :escalated, :needed_by 
   def escalate_to_admin
     self.update_attributes(:escalated => true)
@@ -21,5 +20,11 @@ class Question < ActiveRecord::Base
     end
     return false
   end
+  
+  def append_info(text)
+      self.updated_at = Time.now
+      self.appended_info = text
+  end
+
 
 end

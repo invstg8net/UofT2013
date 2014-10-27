@@ -1,9 +1,14 @@
 <html>
-<body link="#00FF00" vlink="#00FF00" alink="#00FF00"> 
+<body link="#00FF00" vlink="#00FF00" alink="#00FF00"style="background-color: #000000" TEXT="#ffffff"> 
+<font color="#ffffff" face="Helvetica, Arial, Trebuchet MS, Verdana, sans-serif" size="2">&nbsp;&nbsp;
+
 <h1>Questions</h1>
 <%= flash_message %>
+<font color="#ffffff" face="Helvetica, Arial, Trebuchet MS, Verdana, sans-serif" size="2">&nbsp;&nbsp;
+
 </br>
-<%= link_to "Create New Question", new_question_path %>
+
+<%= link_to "Create New Question", new_question_path, {:style=>'color:#ffffff'} %>
 <h3 align= "center">My Questions</h3>
 <div class="container">
   <table class="table">
@@ -14,10 +19,10 @@
     <th>Date</th>
     <th>Needed By</th>
     <th>Answers</th>
+    <th>Edit</th>
     <!--<th>Successful Answers</th>
     <th>Unsuccessful Replies</th> -->
-    <th></th>
-    <th></th>
+
     </thead>
     <% @questions.each do |q| %>
       <tr class="question">
@@ -26,11 +31,9 @@
         <td><%= q.phone_number %></td>
         <td><%= q.created_at.strftime('%c') %></td>
         <td><%= q.needed_by.strftime('%c') %></td>
-        <td><%= q.answers.where(:answered => true).where('body IS NOT NULL').count %></td>
-        <!--<td><%= q.answers.count %></td>
-        
-        <td><%= q.answers.where(:answered => true).where('body IS NULL').count %></td> -->
-        <td><%= link_to 'View Answers', question_path(q.id) %> </td>
+        <td><%= q.answers.where(:answered => true).where('body IS NOT NULL').count %>   <%= link_to 'View Answers', question_path(q.id), {:style=>'color:#ffffff'} %> </td>
+        <td><%= link_to 'Edit Question', edit_question_path(q), {:style=>'color:#ffffff'} %> </td>
+        <td> </td>
        
       </tr>
     <% end %>
@@ -65,8 +68,8 @@
         <!--<td><%= p.answers.count %></td>
         
         <td><%= p.answers.where(:answered => true).where('body IS NULL').count %></td> -->
-        <td><%= link_to 'View Answers', question_path(p.id) %> </td>
-        <td><%= link_to 'Answer Question', edit_answer_path(Answer.find(:all, :conditions => ["researcher_id = ? and question_id = ?", current_user.id, p.id]).first.id) %> </td>
+        <td><%= link_to 'View Answers', question_path(p.id), {:style=>'color:#ffffff'} %> </td>
+        <td><%= link_to 'Answer Question', edit_answer_path(Answer.find(:all, :conditions => ["researcher_id = ? and question_id = ?", current_user.id, p.id]).first.id), {:style=>'color:#ffffff'} %> </td>
       </tr>
     <% end %>
   </table>

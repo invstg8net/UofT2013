@@ -8,6 +8,9 @@ class CreateQuestionsTable < ActiveRecord::Migration
       t.timestamps
       t.boolean :escalated, :default => :false
       t.datetime :needed_by
+      t.string :appended_info, :default => nil
+      t.integer :researcher_id
+      t.datetime :updated_at
     end
   end
 end

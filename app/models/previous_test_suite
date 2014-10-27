@@ -1,0 +1,161 @@
+#require 'researcher'
+require 'test/unit'
+require 'active_record'
+require './name'
+require './field'
+#require './maxquestion'
+#require './status'
+#require './textcap'
+#require './time'
+require './phone'
+require './rating'
+#require './expert'
+require './question'
+
+class Test_Suite < Test::Unit::TestCase
+
+        def setup
+                @name = Name.new
+#                @expert = Expert.new
+                @rating = Rating.new
+                @phone = Phone.new 
+#                @status = Status.new
+#                @maxquestion = QuestionCap.new
+#                @textlengthcap = TextLengthCap.new
+                @question = Question.new
+                #@researcher = Researcher.new
+        end
+
+        def teardown
+        end
+#1
+        def test_CreateName
+                assert_equal @name.GetName, nil
+        end
+#2
+        def test_UpdateName
+                @name.name = "Dave"
+                assert_equal @name.GetName, "Dave"
+        end
+#3
+#        def test_CreateExpertise
+#                assert_equal @expert.GetExpertise, nil
+#        end
+#4
+#        def test_UpdateExpertise
+#                @expert.topic = "Sciences"
+#                assert_equal @expert.GetExpertise, "Sciences"
+#        end
+#5
+        def test_ExpertiseDoesNotExist
+                @expert.topic = "Emotions"
+                #This test will output a message to show that it detected a non-existing field
+                assert_equal @expert.GetExpertise, nil
+        end
+#6        
+        def test_CreateRating
+                assert_equal @rating.GetRating, nil
+        end
+#7
+        def test_UpdateRating
+                @rating.rating = "3"
+                assert_equal @rating.GetRating, "3"
+        end
+#8
+        def test_CreatePhone
+                assert_equal @phone.GetPhone, nil
+        end
+#9
+        def test_UpdatePhone
+                @phone.phone = "4161234567"
+                assert_equal @phone.GetPhone, "4161234567"
+        end
+#10        
+#        def test_CreateStatus
+#                assert_equal @status.GetStatus, nil
+#        end
+#11
+        #Postcondition : Display Permanently Banned
+#        def test_UpdateStatusBanned
+#                @status.SetStatus(-1)
+#                assert_equal @status.GetStatus, "Permanently Banned"
+#        end
+#12
+        #Postcondition : Display Good Standing
+#        def test_UpdateStatusGoodStanding
+#                @status.SetStatus(0)
+#                assert_equal @status.GetStatus, "Good Standing"
+#        end
+#13
+        #PostCondtion : Returns number of days suspended
+#        def test_UpdateStatusSuspended
+#                @status.SetStatus(25)
+#                assert_equal @status.GetStatus, 25
+#        end
+#14
+#        def test_CreateMaxQuestion
+#                assert_equal @maxquestion.GetQuestionCap, nil
+#        end
+#15
+#        def test_UpdateMaxQuestion
+#                @maxquestion.SetQuestionCap(4)
+#                assert_equal @maxquestion.GetQuestionCap, 4
+#        end
+#16
+#        def test_CreateTextLengthCap
+#                assert_equal @textlengthcap.GetTextLengthCap, nil
+#        end
+#17
+#        def test_UpdateTextLengthCap
+#                @textlengthcap.SetTextLengthCap(145)
+#                assert_equal @textlengthcap.GetTextLengthCap, 145
+#        end
+#18
+        #Creates an anonymous name for the user if he wants to hide his identity
+        def test_HideName
+                @name.name = "Dave"
+                assert_equal @name.GetName, "Dave"
+                @name.hidden = 0
+                assert_equal @name.hidden, "0"
+		
+        end
+#19
+        def test_Hide_Show_Name
+                @name.name = "Dave"
+                assert_equal @name.GetName, "Dave"
+                @name.hidden = 0
+                assert_equal @name.hidden, "0"
+                @name.hidden = 2
+                assert_equal @name.hidden, "2"
+        end
+#20
+#        def test_HideExpertise
+#                @expert.topic = "Astronomy"
+#                assert_equal @expert.GetExpertise, "Astronomy"
+#                @expert.hidden = 0
+#                assert_equal @expert.hidden, 0
+#        end
+#21
+#        def test_Hide_Show_Expertise
+#                @expert.topic = "Politics"
+#                assert_equal @expert.GetExpertise, "Politics"
+#                @expert.hidden = 0
+#                assert_equal @expert.hidden, "0"
+#                @expert.hidden = 2
+#                assert_equal @expert.hidden, "2"
+#        end
+#24
+#        def test_Appending_Info_To_Question
+#                @question.SetQuestion("This is the Body")
+#                assert_equal @question.GetQuestion, "This is the Body"
+#                @question.Add_Info(" and this is the Additional Info")
+#                assert_equal @question.GetQuestion, "This is the Body and this is the Additional Info"
+#        end 
+#25        
+#        def test_Num_Of_Texts_Required
+#                @textlengthcap.SetTextLengthCap(3)
+#                assert_equal @textlengthcap.GetTextLengthCap(), 3
+#                assert_equal @textlengthcap.OverThreshold(1000), "Your message will take 6 texts"
+#        end
+                
+end

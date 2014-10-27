@@ -1,24 +1,43 @@
+ <body style="background-color: #000000" align="center">
+
 <p id="notice"><%= notice %></p>
 
 <h1>Invstg8.net account</h1>
 </br>
-<%= link_to "Edit Info", edit_researcher_path(@researcher) %>
+<%= link_to "Edit Info", edit_researcher_path(@researcher), {:style=>'color:#ffffff'} %>
+</br>
+<%= link_to "Edit Privacy", edit_privacy_path(@privacy), {:style=>'color:#ffffff'} %>
 </br>
 
 <div class="container">
   <table class="table">
     <thead>
+    <th>Pseudonym</th>
     <th>Name</th>
     <th>Email</th>
     <th>Phone</th>
+    <th>Twitter</th>
+    <th>Region</th>
     <th>Expertise</th>
+    <th>Account Status</th>
     </thead>
    
       <tr class="researcher">
+        <td><%= @researcher.getPseudonym(current_user) %></td>
         <td><%= @researcher.name %></td>
         <td><%= @researcher.email %></td>
         <td><%= @researcher.phone_number %></td>
-         <td><%= @researcher.expertise %></td>
+        <td><%= @researcher.twitter %></td>
+        <td><%= @researcher.region %></td>
+        <td><%= @researcher.expertise %></td>
+        <% if @researcher.status == 1 %>
+          <td><%= "Active" %></td>
+        <% elsif @researcher.status == 0 %>
+          <td><%= "Deactivated" %></td>
+        <% elsif @researcher.status == -1 %>
+          <td><%= "Banned" %></td>
+        <% end %>
+        
       </tr>
     
   </table>
@@ -28,4 +47,4 @@
 
 
 
-<%= link_to 'Back', "questions" %>
+<%= link_to 'Back', "questions", {:style=>'color:#ffffff'} %>
